@@ -1,0 +1,102 @@
+﻿@model IEnumerable<IBS.ERP.Models.ProductMaster>
+
+@{
+    ViewBag.Title = "Product Master";
+}
+
+<h2>Product List</h2>
+
+<p>
+    <div style="text-align:center" class="bold-red"> @TempData["Message"] </div>
+    @Html.ActionLink("Create Product", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.ProductCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BarCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierName)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.UOM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyPrice)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.RePOorderLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RePOorderQuantity)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.ReSOorderLevel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReSOorderQuantity)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BarCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.UOM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyPrice)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.RePOorderLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RePOorderQuantity)
+        </td>
+
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ReSOorderLevel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReSOorderQuantity)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId}) |
+            @*@Html.ActionLink("Details", "Details", new {  id=item.PrimaryKey  }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+        </td>
+    </tr>
+}
+
+</table>

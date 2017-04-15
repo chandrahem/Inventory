@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <script>
+    $(document).ready(function () {
+        $('.dropdown-toggle').dropdown();
+    });
+    </script>
+    <style>
+        .outer {
+            white-space: nowrap;
+            margin-bottom: 20px;
+        }
+
+        .inner {
+            display: inline-block;
+        }
+    </style>
+    @using IBS.ERP.Controllers;
+    @using IBS.ERP.Models;
+    @{
+        
+        //MenuBL menuBL = new MenuBL();
+        //List<Menus> myMenu = menuBL.getMenuDetail();
+        HomeController home = new HomeController();
+        List<Menus> myMenu = home.GetMenu();
+        System.Web.HttpContext.Current.Session["CompanyName"].ToString(); 
+        var plist = myMenu.Where(m => m.ParentId == null).ToList(); // This will list main menu items on which we'll apply loop to display them.
+        <nav>
+       <div class="outer">
+        @Html.Partial("_LoginPartial")
+        @foreach (var pitem in plist)
+        {
+            var clist = myMenu.Where(m => m.ParentId == pitem.ModuleId).ToList();
+                <div class="dropdown inner">
+                    
+                        <button id="@pitem.ModuleName" class="btn-primary  dropdown-toggle" data-toggle="dropdown">@pitem.ModuleName <span class="caret"></span> </button>
+                        
+                        <ul class="dropdown-menu">
+                        @foreach (var citem in clist)
+                        {
+                            <li>@Html.ActionLink(@citem.ModuleName, @citem.ActionName, @citem.ControllerName)</li>
+                        }
+                    </ul>
+                    
+                </div>
+        }
+        </div>
+        </nav>
+    }
+    
+    <div>
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - IBS Inventory Management</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,5 @@
+E:\My Projects\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.DataAccess.dll
+E:\My Projects\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.DataAccess.pdb
+E:\My Projects\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.DataAccess.csprojResolveAssemblyReference.cache
+E:\My Projects\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.DataAccess.dll
+E:\My Projects\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.DataAccess.pdb

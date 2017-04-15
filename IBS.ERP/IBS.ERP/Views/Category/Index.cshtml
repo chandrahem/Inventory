@@ -1,0 +1,45 @@
+﻿@model IEnumerable<IBS.ERP.Models.Category>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category List</h2>
+
+<p>
+    <div style="text-align:center" class="bold-red"> @TempData["Message"] </div>
+    @Html.ActionLink("Create Category", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.categoryid }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.categoryid }, new { onclick = "return confirm('Are you sure to delete this category?');" })
+        </td>
+    </tr>
+}
+
+</table>

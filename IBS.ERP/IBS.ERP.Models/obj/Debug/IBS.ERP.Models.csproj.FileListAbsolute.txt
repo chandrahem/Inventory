@@ -1,0 +1,5 @@
+E:\My Projects\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.dll
+E:\My Projects\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.pdb
+E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
+E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb
+E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.csprojResolveAssemblyReference.cache
