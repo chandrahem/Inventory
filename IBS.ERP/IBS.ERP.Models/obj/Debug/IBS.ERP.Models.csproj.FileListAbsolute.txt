@@ -3,3 +3,9 @@ E:\My Projects\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.pdb
 E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
 E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb
 E:\My Projects\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.csprojResolveAssemblyReference.cache
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.pdb
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\log4net.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.csprojResolveAssemblyReference.cache
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb

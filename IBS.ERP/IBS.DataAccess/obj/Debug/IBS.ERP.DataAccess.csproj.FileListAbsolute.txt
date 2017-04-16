@@ -5,3 +5,11 @@ E:\My Projects\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.dll
 E:\My Projects\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.pdb
 E:\My Projects\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.dll
 E:\My Projects\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.pdb
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.DataAccess.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.DataAccess.pdb
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\log4net.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.pdb
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.csprojResolveAssemblyReference.cache
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.dll
+D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.pdb
