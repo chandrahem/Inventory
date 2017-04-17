@@ -17,3 +17,12 @@ D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.E
 D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.csprojResolveAssemblyReference.cache
 D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.dll
 D:\InventoryManagementSystem_GitHub\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.csprojResolveAssemblyReference.cache
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb
