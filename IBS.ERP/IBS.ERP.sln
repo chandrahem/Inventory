@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBS.ERP", "IBS.ERP\IBS.ERP.csproj", "{A44597A3-3C21-4B4F-9DD4-3742E41ABF4A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,6 +17,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBS.ERP.Models", "IBS.ERP.Models\IBS.ERP.Models.csproj", "{C9419571-B117-4136-81AB-65162C26F786}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBS.ERP.BL", "IBS.ERP.BL\IBS.ERP.BL.csproj", "{255BD63B-3AAC-4A1A-9725-A1AFFE977243}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{91282CE1-6E34-45DD-9E7E-25311E2A1860}"
+	ProjectSection(SolutionItems) = preProject
+		Jtable.zip = Jtable.zip
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
