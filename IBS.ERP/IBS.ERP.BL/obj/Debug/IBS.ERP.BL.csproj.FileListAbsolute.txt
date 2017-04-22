@@ -26,3 +26,13 @@ E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Mod
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.csprojResolveAssemblyReference.cache
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.dll
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.pdb
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.dll
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.dll
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\log4net.dll
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.pdb
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.pdb
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.csprojResolveAssemblyReference.cache
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.dll
+G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb
