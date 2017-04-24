@@ -17,7 +17,10 @@ namespace IBS.ERP.DataAccess
 
             try
             {
-
+                if (LoggedInUser == null && System.Web.HttpContext.Current.Session["UserAccount"] != null)
+                {
+                    LoggedInUser = Convert.ToString(System.Web.HttpContext.Current.Session["UserAccount"]);
+                }
 
                 if (DBProvider == ProviderName.SqlClient)
                 {

@@ -25,7 +25,11 @@ namespace IBS.ERP.DataAccess
       public baseDAL()
        {
            parameters = new List<IBSparameter>();
-           string CompanyDatabaseConnectionString = Convert.ToString(System.Web.HttpContext.Current.Session["DBConnectionString"]);
+          
+          string CompanyDatabaseConnectionString =string.Empty;
+          if(System.Web.HttpContext.Current.Session["DBConnectionString"] != null)
+             CompanyDatabaseConnectionString = Convert.ToString(System.Web.HttpContext.Current.Session["DBConnectionString"]);
+          
            // Check Connection string from Context if it is not there then use from config 
            if (CompanyDatabaseConnectionString.Length > 0)
            {
@@ -35,24 +39,33 @@ namespace IBS.ERP.DataAccess
                string CompanyDatabaseProvider = Convert.ToString(System.Web.HttpContext.Current.Session["DBProviderName"]);
                CompanyCode = Convert.ToString(System.Web.HttpContext.Current.Session["CompanyCode"]);
                conS = getConnection(CompanyCode, CompanyDatabaseConnectionString, CompanyDatabaseProvider);
+               strProviderName = conS.ProviderName;
+               conn = CreateDbConnection(strProviderName, conS.ConnectionString);
+               DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
            }
-           strProviderName = conS.ProviderName;
-           conn = CreateDbConnection(strProviderName, conS.ConnectionString);
-           DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName),getLastNameOfDBProvider(strProviderName));
+           else // if there is no comapny database exist then connect to userManagement
+           {
+               SetUserManagementDatabaseInfo();
+           }
        }
 
 
       public baseDAL(string connectionStringUserDatabase)
       {
-          conS = ConfigurationManager.ConnectionStrings["IBSUserMasterConnectionString"];
-          strProviderName = conS.ProviderName;
-          conn = CreateDbConnection(strProviderName, conS.ConnectionString);
-          DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
+          SetUserManagementDatabaseInfo();
       }
       private ConnectionStringSettings getConnection(string connectionName, string connectionString, string providerName)
       {
           ConnectionStringSettings conS = new ConnectionStringSettings(connectionName, connectionString, providerName); 
           return conS;
+      }
+
+      private void SetUserManagementDatabaseInfo()
+      {
+          conS = ConfigurationManager.ConnectionStrings["IBSUserMasterConnectionString"];
+          strProviderName = conS.ProviderName;
+          conn = CreateDbConnection(strProviderName, conS.ConnectionString);
+          DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
       }
 
       // Given a provider name and connection string, 
