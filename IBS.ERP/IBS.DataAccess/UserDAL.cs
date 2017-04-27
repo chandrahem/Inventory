@@ -20,7 +20,7 @@ namespace IBS.ERP.DataAccess
             List<IBSparameter> parameters= new List<IBSparameter>();
             try
             {
-
+                System.Web.HttpContext.Current.Session["UserAccount"] = userMaster.UserAccount;
 
                 if (DBProvider == ProviderName.SqlClient)
                 {

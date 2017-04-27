@@ -14,6 +14,7 @@ namespace IBS.Services
                 name: "DefaultApi",
                 routeTemplate: "IBSApi/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+
             );
         }
     }

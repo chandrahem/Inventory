@@ -25,7 +25,7 @@ namespace IBS.Services.Controllers
                
                 response.ReturnValue = categroyBL.SaveCategory(objCategory);
 
-                if (response.HasError) { throw new Exception(response.ReturnValue.ToString()); }
+                
 
             }
             catch (Exception ce)
