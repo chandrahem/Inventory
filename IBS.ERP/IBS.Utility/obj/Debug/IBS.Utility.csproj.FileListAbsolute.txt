@@ -1,0 +1,5 @@
+G:\Abhishek\Personal\Hem\Invent\IBS.ERP\IBS.Utility\bin\Debug\IBS.Utility.dll
+G:\Abhishek\Personal\Hem\Invent\IBS.ERP\IBS.Utility\bin\Debug\IBS.Utility.pdb
+G:\Abhishek\Personal\Hem\Invent\IBS.ERP\IBS.Utility\bin\Debug\Newtonsoft.Json.dll
+G:\Abhishek\Personal\Hem\Invent\IBS.ERP\IBS.Utility\obj\Debug\IBS.Utility.dll
+G:\Abhishek\Personal\Hem\Invent\IBS.ERP\IBS.Utility\obj\Debug\IBS.Utility.pdb
