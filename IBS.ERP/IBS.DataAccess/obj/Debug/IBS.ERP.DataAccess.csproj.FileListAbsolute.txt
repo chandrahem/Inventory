@@ -28,3 +28,11 @@ G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Mode
 G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.csprojResolveAssemblyReference.cache
 G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.dll
 G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.pdb
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.csprojResolveAssemblyReference.cache
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.DataAccess.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.DataAccess.pdb
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\log4net.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\bin\Debug\IBS.ERP.Models.pdb
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.DataAccess\obj\Debug\IBS.ERP.DataAccess.pdb

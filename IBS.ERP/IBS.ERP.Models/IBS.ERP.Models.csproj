@@ -49,10 +49,13 @@
     <Compile Include="CustomAdoNetAppender.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\CompanyMaster.cs" />
+    <Compile Include="Models\CountryStateCity.cs" />
     <Compile Include="Models\CustomerMaster.cs" />
     <Compile Include="Models\EmployeeMaster.cs" />
     <Compile Include="Models\Menus.cs" />
+    <Compile Include="Models\Paging.cs" />
     <Compile Include="Models\Productmaster.cs" />
     <Compile Include="Models\Purchase\PoDetail.cs" />
     <Compile Include="Models\Purchase\PoHead.cs" />

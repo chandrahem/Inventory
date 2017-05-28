@@ -31,5 +31,7 @@ namespace IBS.ERP.Models {
         public DateTime? ModifiedDate { get; set; }
         public short? LockStatus { get; set; }
         public bool? Deleted { get; set; }
+
+        public string State { get; set; }
     }
 }

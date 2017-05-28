@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IBS.ERP.Models.CompanyMaster>
+
+@{
+    ViewBag.Title = "Company";
+}
+
+<h2>Company List</h2>
+
+<p>
+    <div style="text-align:center" class="bold-red"> @TempData["Message"] </div>
+    @Html.ActionLink("Create Company", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+
+        <th>@Html.DisplayNameFor(model => model.RegistrationNo)
+        
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CompanyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CompanyId }, new { onclick = "return confirm('Are you sure to delete this category?');" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
