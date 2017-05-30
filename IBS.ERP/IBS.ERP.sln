@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBS.ERP", "IBS.ERP\IBS.ERP.csproj", "{A44597A3-3C21-4B4F-9DD4-3742E41ABF4A}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -24,6 +24,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBS.Services", "IBS.Services\IBS.Services.csproj", "{1772EF71-CEE3-405C-BF2C-8A4FADFCA314}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferedDlls", "ReferedDlls", "{A9CFF1BD-FD3B-45AB-B4A7-D648ED6848C0}"
+	ProjectSection(SolutionItems) = preProject
+		ReferedDlls\log4net.dll = ReferedDlls\log4net.dll
+		ReferedDlls\MySql.Data.dll = ReferedDlls\MySql.Data.dll
+		ReferedDlls\MySql.Web.dll = ReferedDlls\MySql.Web.dll
+		ReferedDlls\System.Web.Optimization.dll = ReferedDlls\System.Web.Optimization.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,5 +62,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A9CFF1BD-FD3B-45AB-B4A7-D648ED6848C0} = {91282CE1-6E34-45DD-9E7E-25311E2A1860}
 	EndGlobalSection
 EndGlobal
