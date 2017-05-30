@@ -46,3 +46,12 @@ D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\log4net.dll
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.pdb
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.pdb
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.BL.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.DataAccess.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\bin\Debug\IBS.ERP.Models.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.csprojResolveAssemblyReference.cache
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.BL\obj\Debug\IBS.ERP.BL.pdb

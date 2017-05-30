@@ -25,27 +25,44 @@ namespace IBS.ERP.DataAccess
                 if (DBProvider == ProviderName.SqlClient)
                 {
 
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "@UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
 
-                    IBSparameter UserRoleparameter = new IBSparameter();
-                    UserRoleparameter.ParameterName = "@RoleID";
-                    UserRoleparameter.DataType = DbType.Int32;
-                    UserRoleparameter.Value = UserRoleId;
-                    UserRoleparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(UserRoleparameter);
+                    IBSparameter userRoleParameter = new IBSparameter();
+                    userRoleParameter.ParameterName = "@RoleID";
+                    userRoleParameter.DataType = DbType.Int32;
+                    userRoleParameter.Value = UserRoleId;
+                    userRoleParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userRoleParameter);
                   
 
                 }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
 
+                    IBSparameter passwordParameter = new IBSparameter();
+                    passwordParameter.ParameterName = "p_RoleID";
+                    passwordParameter.DataType = DbType.Int32;
+                    passwordParameter.Value = UserRoleId;
+                    passwordParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(passwordParameter);
+
+                    
+                }
                 DataSet dsMenu= null;
                 dsMenu = GetDataSet("ERP_Get_Menu", parameters);
 
-                var MenuCollection = from Menus in dsMenu.Tables[0].AsEnumerable()
+                var menuCollection = from Menus in dsMenu.Tables[0].AsEnumerable()
                                      select new Menus
                                           {
                                               ModuleId = Menus.Field<int>("ModuleId"),
@@ -55,7 +72,7 @@ namespace IBS.ERP.DataAccess
                                               ControllerName = Menus.Field<String>("ControllerName"),
 
                                           };
-                menuList = MenuCollection.ToList<Menus>();
+                menuList = menuCollection.ToList<Menus>();
 
                 System.Web.HttpContext.Current.Session["CompanyName"] = "NIBIB NEW"; // take this from output parameter
 

@@ -20,6 +20,7 @@ namespace IBS.ERP.Models
         public virtual string DBProviderName { get; set; }
         public virtual int RoleId { get; set; }
         public virtual string SignInStatus { get; set; }
+        //public virtual string ApplicationName { get; set; }
        
     }
 }

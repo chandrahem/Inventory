@@ -40,9 +40,32 @@ namespace IBS.ERP.DataAccess
                     parameters.Add(PasswordParameter);
                  
                 }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter Userparameter = new IBSparameter();
+                    Userparameter.ParameterName = "p_UserAccount";
+                    Userparameter.DataType = DbType.String;
+                    Userparameter.Value = userMaster.UserAccount;
+                    Userparameter.Direction = ParameterDirection.Input;
+                    parameters.Add(Userparameter);
+
+                    IBSparameter PasswordParameter = new IBSparameter();
+                    PasswordParameter.ParameterName = "p_Password";
+                    PasswordParameter.DataType = DbType.String;
+                    PasswordParameter.Value = userMaster.Password;
+                    PasswordParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(PasswordParameter);
+
+                    IBSparameter ApplicationParameter = new IBSparameter();
+                    ApplicationParameter.ParameterName = "p_appName";
+                    ApplicationParameter.DataType = DbType.String;
+                    ApplicationParameter.Value = "Inventory";
+                    ApplicationParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(ApplicationParameter);
+                }
 
                 DataSet dsLoginViewModel = null;
-                dsLoginViewModel = GetDataSet("GetUserDetail", parameters);
+                dsLoginViewModel = GetDataSet("ERP_Get_UserDetail", parameters);
 
                  var LoginViewCollection = from LoginViewModel in dsLoginViewModel.Tables[0].AsEnumerable()
                                               select new LoginViewModel

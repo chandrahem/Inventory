@@ -17,29 +17,52 @@ namespace IBS.ERP.DataAccess
                 if (DBProvider == ProviderName.SqlClient)
                 {
 
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "@UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
 
-                    IBSparameter UserRoleParameter = new IBSparameter();
-                    UserRoleParameter.ParameterName = "@RoleId";
-                    UserRoleParameter.DataType = DbType.String;
-                    UserRoleParameter.Value = UserRoleId;
-                    UserRoleParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(UserRoleParameter);
+                    IBSparameter userRoleParameter = new IBSparameter();
+                    userRoleParameter.ParameterName = "@RoleId";
+                    userRoleParameter.DataType = DbType.String;
+                    userRoleParameter.Value = UserRoleId;
+                    userRoleParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userRoleParameter);
 
-                    IBSparameter PermissionNameParameter = new IBSparameter();
-                    PermissionNameParameter.ParameterName = "@PermissionName";
-                    PermissionNameParameter.DataType = DbType.String;
-                    PermissionNameParameter.Value = permissionName;
-                    PermissionNameParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(PermissionNameParameter);
+                    IBSparameter permissionNameParameter = new IBSparameter();
+                    permissionNameParameter.ParameterName = "@PermissionName";
+                    permissionNameParameter.DataType = DbType.String;
+                    permissionNameParameter.Value = permissionName;
+                    permissionNameParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(permissionNameParameter);
 
                 }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
 
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
+
+                    IBSparameter userRoleParameter = new IBSparameter();
+                    userRoleParameter.ParameterName = "p_RoleId";
+                    userRoleParameter.DataType = DbType.String;
+                    userRoleParameter.Value = UserRoleId;
+                    userRoleParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userRoleParameter);
+
+                    IBSparameter permissionNameParameter = new IBSparameter();
+                    permissionNameParameter.ParameterName = "p_PermissionName";
+                    permissionNameParameter.DataType = DbType.String;
+                    permissionNameParameter.Value = permissionName;
+                    permissionNameParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(permissionNameParameter);
+                }
                 DataSet dsPermission = null;
                 dsPermission = GetDataSet("ERP_Is_Role_HasPermission", parameters);
 

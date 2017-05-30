@@ -24,3 +24,8 @@ D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Mod
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\log4net.dll
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
 D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb
+E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.csprojResolveAssemblyReference.cache

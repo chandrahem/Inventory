@@ -99,7 +99,7 @@ namespace IBS.ERP.DataAccess
                    IBSparameter CompanyRegistrationNoParameter = new IBSparameter();
                    CompanyRegistrationNoParameter.ParameterName = "@RegistrationNo";
                    CompanyRegistrationNoParameter.DataType = DbType.String;
-                   CompanyRegistrationNoParameter.Value = "kkkkkkk";
+                   CompanyRegistrationNoParameter.Value = company.RegistrationNo;
                    CompanyRegistrationNoParameter.Direction = ParameterDirection.Input;
                    parameters.Add(CompanyRegistrationNoParameter);
 
@@ -124,6 +124,13 @@ namespace IBS.ERP.DataAccess
                    Flag.Value = "I";
                    Flag.Direction = ParameterDirection.Input;
                    parameters.Add(Flag);
+
+                   IBSparameter returnParameter = new IBSparameter();
+                   returnParameter.ParameterName = "@ReturnValue";
+                   returnParameter.DataType = DbType.Int32;
+                   returnParameter.Value = "";
+                   returnParameter.Direction = ParameterDirection.Output;
+                   parameters.Add(returnParameter);
 
 
                }

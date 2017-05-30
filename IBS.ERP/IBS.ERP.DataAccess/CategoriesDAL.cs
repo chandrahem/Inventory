@@ -28,11 +28,20 @@ namespace IBS.ERP.DataAccess
                     parameters.Add(Userparameter);
 
                 }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
+                }
 
                 DataSet dsCategory = null;
                 dsCategory = GetDataSet("ERP_Get_Categories", parameters);
 
-                var MenuCollection = from Category in dsCategory.Tables[0].AsEnumerable()
+                var menuCollection = from Category in dsCategory.Tables[0].AsEnumerable()
                                      select new Category
                                      {
                                          categoryid = Category.Field<int>("categoryid"),
@@ -40,7 +49,7 @@ namespace IBS.ERP.DataAccess
                                          CategoryName = Category.Field<String>("CategoryName"),
                                          Description = Category.Field<String>("Description"),
                                      };
-                objCategories = MenuCollection.ToList<Category>();
+                objCategories = menuCollection.ToList<Category>();
 
 
 
@@ -66,22 +75,38 @@ namespace IBS.ERP.DataAccess
                 if (DBProvider == ProviderName.SqlClient)
                 {
 
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "@UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
 
 
 
-                    IBSparameter CatergoryIdParameter = new IBSparameter();
-                    CatergoryIdParameter.ParameterName = "@CategoryId";
-                    CatergoryIdParameter.DataType = DbType.String;
-                    CatergoryIdParameter.Value = categoryId;
-                    CatergoryIdParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryIdParameter);
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "@CategoryId";
+                    catergoryIdParameter.DataType = DbType.String;
+                    catergoryIdParameter.Value = categoryId;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
 
+                }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
+
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "p_CategoryId";
+                    catergoryIdParameter.DataType = DbType.String;
+                    catergoryIdParameter.Value = categoryId;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
                 }
 
                 DataSet dsCategory = null;
@@ -117,48 +142,93 @@ namespace IBS.ERP.DataAccess
                 if (DBProvider == ProviderName.SqlClient)
                 {
 
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "@UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
 
-                    IBSparameter CatergoryIdParameter = new IBSparameter();
-                    CatergoryIdParameter.ParameterName = "@CategoryId";
-                    CatergoryIdParameter.DataType = DbType.String;
-                    CatergoryIdParameter.Value = category.categoryid;
-                    CatergoryIdParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryIdParameter);
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "@CategoryId";
+                    catergoryIdParameter.DataType = DbType.String;
+                    catergoryIdParameter.Value = category.categoryid;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
 
-                    IBSparameter CatergoryCodeParameter = new IBSparameter();
-                    CatergoryCodeParameter.ParameterName = "@CategoryCode";
-                    CatergoryCodeParameter.DataType = DbType.String;
-                    CatergoryCodeParameter.Value = category.CategoryCode;
-                    CatergoryCodeParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryCodeParameter);
+                    IBSparameter catergoryCodeParameter = new IBSparameter();
+                    catergoryCodeParameter.ParameterName = "@CategoryCode";
+                    catergoryCodeParameter.DataType = DbType.String;
+                    catergoryCodeParameter.Value = category.CategoryCode;
+                    catergoryCodeParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryCodeParameter);
 
 
-                    IBSparameter CatergoryNameParameter = new IBSparameter();
-                    CatergoryNameParameter.ParameterName = "@CategoryName";
-                    CatergoryNameParameter.DataType = DbType.String;
-                    CatergoryNameParameter.Value = category.CategoryName;
-                    CatergoryNameParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryNameParameter);
+                    IBSparameter catergoryNameParameter = new IBSparameter();
+                    catergoryNameParameter.ParameterName = "@CategoryName";
+                    catergoryNameParameter.DataType = DbType.String;
+                    catergoryNameParameter.Value = category.CategoryName;
+                    catergoryNameParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryNameParameter);
 
-                    IBSparameter CatergoryDescParameter = new IBSparameter();
-                    CatergoryDescParameter.ParameterName = "@Description";
-                    CatergoryDescParameter.DataType = DbType.String;
-                    CatergoryDescParameter.Value = category.Description;
-                    CatergoryDescParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryDescParameter);
+                    IBSparameter catergoryDescParameter = new IBSparameter();
+                    catergoryDescParameter.ParameterName = "@Description";
+                    catergoryDescParameter.DataType = DbType.String;
+                    catergoryDescParameter.Value = category.Description;
+                    catergoryDescParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryDescParameter);
 
-                    IBSparameter ReturnParameter = new IBSparameter();
-                    ReturnParameter.ParameterName = "@ReturnValue";
-                    ReturnParameter.DataType = DbType.Int32;
-                    ReturnParameter.Value = "";
-                    ReturnParameter.Direction = ParameterDirection.Output;
-                    parameters.Add(ReturnParameter);
+                    IBSparameter returnParameter = new IBSparameter();
+                    returnParameter.ParameterName = "@ReturnValue";
+                    returnParameter.DataType = DbType.Int32;
+                    returnParameter.Value = "";
+                    returnParameter.Direction = ParameterDirection.Output;
+                    parameters.Add(returnParameter);
+                }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
+
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "p_CategoryId";
+                    catergoryIdParameter.DataType = DbType.Int32;
+                    catergoryIdParameter.Value = category.categoryid;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
+
+                    IBSparameter catergoryCodeParameter = new IBSparameter();
+                    catergoryCodeParameter.ParameterName = "p_CategoryCode";
+                    catergoryCodeParameter.DataType = DbType.String;
+                    catergoryCodeParameter.Value = category.CategoryCode;
+                    catergoryCodeParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryCodeParameter);
+
+
+                    IBSparameter catergoryNameParameter = new IBSparameter();
+                    catergoryNameParameter.ParameterName = "p_CategoryName";
+                    catergoryNameParameter.DataType = DbType.String;
+                    catergoryNameParameter.Value = category.CategoryName;
+                    catergoryNameParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryNameParameter);
+
+                    IBSparameter catergoryDescParameter = new IBSparameter();
+                    catergoryDescParameter.ParameterName = "p_Description";
+                    catergoryDescParameter.DataType = DbType.String;
+                    catergoryDescParameter.Value = category.Description;
+                    catergoryDescParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryDescParameter);
+
+                    IBSparameter returnParameter = new IBSparameter();
+                    returnParameter.ParameterName = "p_ReturnValue";
+                    returnParameter.DataType = DbType.Int32;
+                    returnParameter.Value = "";
+                    returnParameter.Direction = ParameterDirection.Output;
+                    parameters.Add(returnParameter);
                 }
                 //ReturnResult returnValue = new ReturnResult();
                 return ExecuteSqlNonQuery("ERP_Save_Category", parameters);
@@ -206,29 +276,52 @@ namespace IBS.ERP.DataAccess
                 if (DBProvider == ProviderName.SqlClient)
                 {
 
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
+                    IBSparameter userparameter = new IBSparameter();
+                    userparameter.ParameterName = "@UserAccount";
+                    userparameter.DataType = DbType.String;
+                    userparameter.Value = LoggedInUser;
+                    userparameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userparameter);
 
 
 
-                    IBSparameter CatergoryIdParameter = new IBSparameter();
-                    CatergoryIdParameter.ParameterName = "@CategoryId";
-                    CatergoryIdParameter.DataType = DbType.String;
-                    CatergoryIdParameter.Value = categoryid;
-                    CatergoryIdParameter.Direction = ParameterDirection.Input;
-                    parameters.Add(CatergoryIdParameter);
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "@CategoryId";
+                    catergoryIdParameter.DataType = DbType.Int32;
+                    catergoryIdParameter.Value = categoryid;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
 
-                    IBSparameter ReturnParameter = new IBSparameter();
-                    ReturnParameter.ParameterName = "@ReturnValue";
-                    ReturnParameter.DataType = DbType.Int32;
-                    ReturnParameter.Value = "";
-                    ReturnParameter.Direction = ParameterDirection.Output;
-                    parameters.Add(ReturnParameter);
+                    IBSparameter returnParameter = new IBSparameter();
+                    returnParameter.ParameterName = "@ReturnValue";
+                    returnParameter.DataType = DbType.Int32;
+                    returnParameter.Value = "";
+                    returnParameter.Direction = ParameterDirection.Output;
+                    parameters.Add(returnParameter);
 
+                }
+                else if (DBProvider == ProviderName.MySqlClient)
+                {
+                    IBSparameter userParameter = new IBSparameter();
+                    userParameter.ParameterName = "p_UserAccount";
+                    userParameter.DataType = DbType.String;
+                    userParameter.Value = LoggedInUser;
+                    userParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(userParameter);
+
+                    IBSparameter catergoryIdParameter = new IBSparameter();
+                    catergoryIdParameter.ParameterName = "p_CategoryId";
+                    catergoryIdParameter.DataType = DbType.Int32;
+                    catergoryIdParameter.Value = categoryid;
+                    catergoryIdParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(catergoryIdParameter);
+
+                    IBSparameter returnParameter = new IBSparameter();
+                    returnParameter.ParameterName = "p_ReturnValue";
+                    returnParameter.DataType = DbType.Int32;
+                    returnParameter.Value = "";
+                    returnParameter.Direction = ParameterDirection.Output;
+                    parameters.Add(returnParameter);
                 }
                 return ExecuteSqlNonQuery("ERP_Delete_Category", parameters);
                 //if (count > 0)
