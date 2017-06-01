@@ -22,52 +22,25 @@ namespace IBS.ERP.Controllers
             return View(Companies);
         }
 
-        // GET: Category/Create
-        [HasPermission("CREATE_CATEGORY")]
+        // GET: COMPANY/Create
+        [HasPermission("CREATE_COMPANY")]
         public ActionResult Create()
         {
 
             return View();
         }
 
-        // POST: Category/Create
+        // POST: COMPANY/Create
         [HttpPost]
-        [HasPermission("CREATE_CATEGORY")]
+        [HasPermission("CREATE_COMPANY")]
         public ActionResult Create(FormCollection collection)
         {
-            ReturnResult returnResult = new ReturnResult();
-            CompanyMaster objCompany = new CompanyMaster();
-            try
-            {
-                // TODO: Add insert logic here
-
-                CompanyBL ObjcompanyBL = new CompanyBL();
-                objCompany.CompanyId = 0;
-                objCompany.CompanyCode = Convert.ToString(collection["CompanyCode"]);
-                objCompany.CompanyName = Convert.ToString(collection["CompanyName"]);
-                objCompany.Address = Convert.ToString(collection["Address"]);
-                objCompany.City = Convert.ToString(collection["City"]);
-                returnResult = ObjcompanyBL.SaveCompany(objCompany);
-                if (returnResult.IsSuccess)
-                {
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    //TempData["CreateCategoryMessage"] = returnResult.Message;
-                   return View(objCompany);
-                }
-            }
-            catch
-            {
-                TempData["CreateCategoryMessage"] = returnResult.Message;
-                return View(objCompany);
-            }
+           return SaveCompany(0, collection);
         }
 
 
-        // GET: Category/Edit/5
-        [HasPermission("UPDATE_CATEGORY")]
+        // GET: COMPANY/Edit/5
+        [HasPermission("UPDATE_COMPANY")]
         public ActionResult Edit(int id)
         {
             CompanyBL companyBL = new CompanyBL();
@@ -77,34 +50,14 @@ namespace IBS.ERP.Controllers
 
         // POST: Category/Edit/5
         [HttpPost]
-        [HasPermission("UPDATE_CATEGORY")]
+        [HasPermission("UPDATE_COMPANY")]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            ReturnResult returnResult = new ReturnResult();
-            CompanyMaster objCompany = new CompanyMaster();
-            try
-            {
-                // TODO: Add insert logic here
-
-                CompanyBL ObjcompanyBL = new CompanyBL();
-                objCompany.CompanyId = id;
-                objCompany.CompanyCode = Convert.ToString(collection["CompanyCode"]);
-                objCompany.CompanyName = Convert.ToString(collection["CompanyName"]);
-                objCompany.Address = Convert.ToString(collection["Address"]);
-                objCompany.City = Convert.ToString(collection["City"]);
-                returnResult = ObjcompanyBL.SaveCompany(objCompany);
-               
-                    return RedirectToAction("Index");
-              
-            }
-            catch
-            {
-                return View(objCompany);
-            }
+            return SaveCompany(id, collection);
         }
 
 
-        [HasPermission("DELETE_CATEGORY")]
+        [HasPermission("DELETE_COMPANY")]
         public ActionResult Delete(int id)
         {
             CompanyBL companyBL = new CompanyBL();
@@ -116,6 +69,47 @@ namespace IBS.ERP.Controllers
             //}
             return RedirectToAction("Index");
             //return View();
+        }
+
+        private ActionResult SaveCompany(int id, FormCollection collection)
+        {
+
+            ReturnResult returnResult = new ReturnResult();
+            CompanyMaster objCompany = new CompanyMaster();
+            try
+            {
+                // TODO: Add insert logic here
+
+                CompanyBL objcompanyBL = new CompanyBL();
+                objCompany.CompanyId = id;
+                objCompany.CompanyCode = Convert.ToString(collection["CompanyCode"]);
+                objCompany.CompanyName = Convert.ToString(collection["CompanyName"]);
+                objCompany.Address = Convert.ToString(collection["Address"]);
+                objCompany.City = Convert.ToString(collection["City"]);
+                objCompany.ContactEmail = Convert.ToString(collection["City"]);
+                objCompany.OwnedBy = Convert.ToString(collection["OwnedBy"]);
+                objCompany.Phone1 = Convert.ToString(collection["Phone1"]);
+                objCompany.Phone2 = Convert.ToString(collection["Phone2"]);
+                objCompany.RegistrationNo = Convert.ToString(collection["RegistrationNo"]);
+                objCompany.Tin = Convert.ToString(collection["Tin"]);
+                objCompany.Website = Convert.ToString(collection["Website"]);
+
+                returnResult = objcompanyBL.SaveCompany(objCompany);
+                if (returnResult.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    //TempData["CreateCategoryMessage"] = returnResult.Message;
+                    return View(objCompany);
+                }
+            }
+            catch
+            {
+                TempData["CreateCategoryMessage"] = returnResult.Message;
+                return View(objCompany);
+            }
         }
     }
 }
