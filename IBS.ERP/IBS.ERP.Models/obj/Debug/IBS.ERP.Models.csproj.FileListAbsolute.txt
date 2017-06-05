@@ -28,4 +28,3 @@ E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.d
 E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\bin\Debug\IBS.ERP.Models.pdb
 E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.dll
 E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.ERP.Models\obj\Debug\IBS.ERP.Models.csprojResolveAssemblyReference.cache

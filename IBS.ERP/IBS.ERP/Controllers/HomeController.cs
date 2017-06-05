@@ -11,6 +11,7 @@ namespace IBS.ERP.Controllers
     {
         public ActionResult Index()
         {
+            // It will show company dashboard
             // call the dashboard functionality  SET the Company name in menu Layout
             return View();
         }
