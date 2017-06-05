@@ -107,7 +107,7 @@ namespace IBS.ERP.Controllers
             }
             catch
             {
-                TempData["CreateCategoryMessage"] = returnResult.Message;
+                TempData["SaveCompanyMessage"] = returnResult.Message;
                 return View(objCompany);
             }
         }
