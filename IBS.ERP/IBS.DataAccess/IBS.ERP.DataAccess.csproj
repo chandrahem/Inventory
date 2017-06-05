@@ -43,9 +43,7 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="baseDAL.cs" />
-    <Compile Include="..\IBS.ERP.DataAccess\CategoriesDAL.cs">
-      <Link>CategoriesDAL.cs</Link>
-    </Compile>
+    <Compile Include="CategoriesDAL.cs" />
     <Compile Include="CompanyDAL.cs" />
     <Compile Include="CustomerDAL.cs" />
     <Compile Include="IBSparameter.cs" />
