@@ -1,160 +1,28 @@
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.csprojResolveAssemblyReference.cache
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll.config
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.pdb
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Antlr3.Runtime.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Data.Edm.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Data.OData.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Web.Infrastructure.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.WebRequest.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Spatial.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.OData.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.Tracing.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Optimization.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Providers.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\WebGrease.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\log4net.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.pdb
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.Tracing.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.OData.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Data.Edm.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Data.OData.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\System.Spatial.xml
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\de\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\es\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\fr\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\it\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ja\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ko\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ru\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\de\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\es\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\fr\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\it\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ja\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ko\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ru\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hans\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hant\Microsoft.Data.OData.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\de\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\es\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\fr\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\it\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ja\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ko\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\ru\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hans\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\bin\zh-Hant\System.Spatial.resources.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.dll
-G:\Abhishek\Personal\Hem\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.pdb
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.csprojResolveAssemblyReference.cache
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll.config
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.pdb
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Web.Infrastructure.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.WebRequest.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Optimization.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\log4net.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.pdb
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.xml
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.dll
-D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.csprojResolveAssemblyReference.cache
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll.config
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Web.Infrastructure.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.WebRequest.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Optimization.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.xml
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.dll
-E:\HemProject_github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.pdb
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll.config
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.Services.pdb
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.dll
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Antlr3.Runtime.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.SqlServer.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.Core.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Cookies.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Facebook.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Google.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.OAuth.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Twitter.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Web.Infrastructure.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.dll
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Owin.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.dll
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.WebRequest.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.Owin.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Optimization.dll
@@ -162,19 +30,38 @@ E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razo
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.dll
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.dll
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.BL.pdb
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\WebGrease.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Newtonsoft.Json.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Net.Http.Formatting.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Helpers.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.WebHost.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Mvc.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Optimization.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Razor.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Deployment.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.WebPages.Razor.xml
-E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Antlr3.Runtime.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\EntityFramework.SqlServer.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.Core.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Facebook.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Cookies.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.OAuth.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Google.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.Twitter.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\System.Web.Http.Owin.xml
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.csprojResolveAssemblyReference.cache
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
+E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb

@@ -5,19 +5,38 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IBS.ERP.BL;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 namespace IBS.ERP.Controllers
 {
     public class CategoryController : Controller
     {
         // GET: Category
         [HasPermission("READ_CATEGORY")]
-        public ActionResult Index()
+        public async Task<ActionResult>  Index()
         {
-            CategoryBL categroyBL = new CategoryBL();
-            //Category Category = new Category();
-            var categories = categroyBL.GetCategoriesList();
+            
+            WebAPI webapi = new WebAPI();
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Get, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]));
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+                               
+                // to convert json  in data table
+                //var table = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Data.DataTable>(data);
 
-            return View(categories);
+                // convert json in IEnumerable object list of category
+                var categories = JsonConvert.DeserializeObject<IEnumerable<Category>>(data);
+                
+                return View(categories);
+            }
+            else
+            {
+                return View();
+            }
+
+                      
         }
 
         // GET: Category/Details/5
@@ -37,29 +56,55 @@ namespace IBS.ERP.Controllers
         // POST: Category/Create
         [HttpPost]
         [HasPermission("CREATE_CATEGORY")]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(FormCollection collection)
         {
             ReturnResult returnResult=  new ReturnResult();
             Category objCategory = new Category();
             try
             {
                 // TODO: Add insert logic here
-              
-                CategoryBL categroyBL = new CategoryBL();
                 objCategory.categoryid = 0;
                 objCategory.CategoryCode = Convert.ToString(collection["CategoryCode"]);
                 objCategory.CategoryName = Convert.ToString(collection["CategoryName"]);
                 objCategory.Description = Convert.ToString(collection["Description"]);
-                returnResult= categroyBL.SaveCategory(objCategory);
-               if (returnResult.IsSuccess)
-               {
-                   return RedirectToAction("Index");
-               }
+
+                WebAPI webapi = new WebAPI();
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objCategory);
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+
+                    // convert json in IEnumerable object list of category
+                    returnResult = JsonConvert.DeserializeObject<ReturnResult>(data);
+
+                    if (returnResult.IsSuccess)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["CreateCategoryMessage"] = returnResult.Message;
+                        return View(objCategory);
+                    }
+                }
                 else
-               {
-                   TempData["CreateCategoryMessage"] = returnResult.Message;
-                   return View(objCategory); 
-               }
+                {
+                    TempData["CreateCategoryMessage"] = "Error while saving data.";
+                    return View(objCategory);
+                }
+              
+               // CategoryBL categroyBL = new CategoryBL();
+               
+               // returnResult= categroyBL.SaveCategory(objCategory);
+               //if (returnResult.IsSuccess)
+               //{
+               //    return RedirectToAction("Index");
+               //}
+               // else
+               //{
+               //    TempData["CreateCategoryMessage"] = returnResult.Message;
+               //    return View(objCategory); 
+               //}
             }
             catch
             {
@@ -70,17 +115,38 @@ namespace IBS.ERP.Controllers
 
         // GET: Category/Edit/5
         [HasPermission("UPDATE_CATEGORY")]
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            CategoryBL categroyBL = new CategoryBL();
-            var categories = categroyBL.GetCategoryById(id);
-            return View(categories);
+
+
+            WebAPI webapi = new WebAPI();
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Get, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]),id);
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+
+                // to convert json  in data table
+                //var table = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Data.DataTable>(data);
+
+                // convert json in IEnumerable object list of category
+                var categories = JsonConvert.DeserializeObject<Category>(data);
+
+                return View(categories);
+            }
+            else
+            {
+                return View();
+            }
+            
+            //CategoryBL categroyBL = new CategoryBL();
+            //var categories = categroyBL.GetCategoryById(id);
+            //return View(categories);
         }
 
         // POST: Category/Edit/5
         [HttpPost]
         [HasPermission("UPDATE_CATEGORY")]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, FormCollection collection)
         {
             ReturnResult returnResult = new ReturnResult();
             Category objCategory = new Category();
@@ -96,19 +162,33 @@ namespace IBS.ERP.Controllers
                 objCategory.CategoryCode = Convert.ToString(collection["CategoryCode"]);
                 objCategory.CategoryName = Convert.ToString(collection["CategoryName"]);
                 objCategory.Description = Convert.ToString(collection["Description"]);
-                returnResult=categoryBL.SaveCategory(objCategory);
+                //returnResult=categoryBL.SaveCategory(objCategory);
 
-
-                if (returnResult.IsSuccess)
+                WebAPI webapi = new WebAPI();
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Put, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), id, objCategory);
+                if (response.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+
+                    var data = await response.Content.ReadAsStringAsync();
+
+                    // convert json in IEnumerable object list of category
+                    returnResult = JsonConvert.DeserializeObject<ReturnResult>(data);
+
+                    if (returnResult.IsSuccess)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["UpdateCategoryMessage"] = returnResult.Message;
+                        return View(objCategory);
+                    }
                 }
                 else
                 {
-                    TempData["UpdateCategoryMessage"] = returnResult.Message;
+                    TempData["UpdateCategoryMessage"] = "Error while saving data.";
                     return View(objCategory);
                 }
-
 
                 
             }
@@ -122,14 +202,39 @@ namespace IBS.ERP.Controllers
 
         // GET: Category/Delete/5
         [HasPermission("DELETE_CATEGORY")]
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            CategoryBL categoryBL = new CategoryBL();
-           ReturnResult result= categoryBL.DeleteCategory(id);
-           if (!result.IsSuccess)
-           {
-               TempData["Message"] = "Error while deleting category.";
-           }
+
+            WebAPI webapi = new WebAPI();
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Delete, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), id );
+            if (response.IsSuccessStatusCode)
+            {
+                var data = await response.Content.ReadAsStringAsync();
+
+                // convert json in IEnumerable object list of category
+               ReturnResult returnResult = JsonConvert.DeserializeObject<ReturnResult>(data);
+
+                if (returnResult.IsSuccess)
+                {
+                    TempData["Message"] = "Category deleted successfully.";// returnResult.Message;// 
+                }
+                else
+                {
+                    TempData["Message"] = "Error while deleting category.";// = returnResult.Message;
+                }
+            }
+            else
+            {
+                TempData["Message"] = "Error while deleting category.";
+            }
+
+
+           // CategoryBL categoryBL = new CategoryBL();
+           //ReturnResult result= categoryBL.DeleteCategory(id);
+           //if (!result.IsSuccess)
+           //{
+           //    TempData["Message"] = "Error while deleting category.";
+           //}
 
            return RedirectToAction("Index");
             //return View();

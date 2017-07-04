@@ -12,6 +12,8 @@ using IBS.ERP.BL;
 using IBS.ERP.Models;
 using System.Collections.Generic;
 using System.Web.Security;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace IBS.ERP.Controllers
 {
@@ -39,7 +41,7 @@ namespace IBS.ERP.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -48,6 +50,24 @@ namespace IBS.ERP.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+
+            //WebAPI webapi = new WebAPI();
+            ////HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Get, "Values", "", "","1");
+            //HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "User", "Get", "", "1", model);
+
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    var data = await response.Content.ReadAsStringAsync();
+
+            //    // to convert json  in data table
+            //    //var table = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Data.DataTable>(data);
+
+            //    // convert json in IEnumerable object list of emp
+            //    var table = JsonConvert.DeserializeObject<IEnumerable<LoginViewModel>>(data);
+            //    return View(table);
+            //}
+
+
             UserBL userBL = new UserBL();
             List<LoginViewModel> loginView=  userBL.getUserLoginDetail(model);
             if (loginView != null && loginView.Count > 0)

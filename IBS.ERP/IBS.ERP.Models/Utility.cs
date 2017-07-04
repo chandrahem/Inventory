@@ -6,7 +6,20 @@ using System.Threading.Tasks;
 
 namespace IBS.ERP.Models
 {
-    class Utility
+    public class Utility
     {
+      
+    }
+    public enum APICallType
+    {
+        /* Create data */
+        Post,
+        /* Read data */
+        Get,  
+        /* Update data */
+        Put,
+        /* delete data */
+        Delete
+
     }
 }

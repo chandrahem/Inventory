@@ -21,14 +21,14 @@ namespace IBS.ERP.DataAccess
        private string strProviderName = string.Empty;//"SqlClient";
        private System.Data.Common.DbConnection conn;
        private ConnectionStringSettings conS = null;
-       
+      
       public baseDAL()
        {
            parameters = new List<IBSparameter>();
-          
-          string CompanyDatabaseConnectionString =string.Empty;
-          if(System.Web.HttpContext.Current.Session["DBConnectionString"] != null)
-             CompanyDatabaseConnectionString = Convert.ToString(System.Web.HttpContext.Current.Session["DBConnectionString"]);
+           string CompanyDatabaseConnectionString = string.Empty;
+
+           if (System.Web.HttpContext.Current.Session["DBConnectionString"] != null)
+               CompanyDatabaseConnectionString = Convert.ToString(System.Web.HttpContext.Current.Session["DBConnectionString"]);
           
            // Check Connection string from Context if it is not there then use from config 
            if (CompanyDatabaseConnectionString.Length > 0)
@@ -49,10 +49,47 @@ namespace IBS.ERP.DataAccess
            }
        }
 
-
+        /// <summary>
+        /// It is used to create connection object of the Usermanagement database i.e. conn
+        /// </summary>
+        /// <param name="connectionStringUserDatabase"></param>
       public baseDAL(string connectionStringUserDatabase)
       {
           SetUserManagementDatabaseInfo();
+      }
+    /// <summary>
+      /// It is used to create company database connection object i.e  conn
+    /// </summary>
+    /// <param name="connectionStringCompanyDatabase"></param>
+    /// <param name="userAccount"></param>
+    /// <param name="roleId"></param>
+    /// <param name="companyDBProvider"></param>
+    /// <param name="companyCode"></param>
+      public baseDAL(string connectionStringCompanyDatabase, string userAccount, string roleId, string companyDBProvider, string companyCode)
+      {
+          parameters = new List<IBSparameter>();
+
+
+          //if(System.Web.HttpContext.Current.Session["DBConnectionString"] != null)
+          //   CompanyDatabaseConnectionString = Convert.ToString(System.Web.HttpContext.Current.Session["DBConnectionString"]);
+
+          // Check Connection string from Context if it is not there then use from config 
+          if (connectionStringCompanyDatabase.Length > 0)
+          {
+              LoggedInUser = userAccount;
+              UserRoleId = Convert.ToInt16(roleId);
+
+              string CompanyDatabaseProvider = companyDBProvider;
+              CompanyCode = companyCode;
+              conS = getConnection(CompanyCode, connectionStringCompanyDatabase, CompanyDatabaseProvider);
+              strProviderName = conS.ProviderName;
+              conn = CreateDbConnection(strProviderName, conS.ConnectionString);
+              DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
+          }
+          else // if there is no comapny database exist then connect to userManagement
+          {
+              SetUserManagementDatabaseInfo();
+          }
       }
       private ConnectionStringSettings getConnection(string connectionName, string connectionString, string providerName)
       {

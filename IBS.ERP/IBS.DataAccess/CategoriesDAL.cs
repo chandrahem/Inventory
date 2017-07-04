@@ -10,7 +10,15 @@ namespace IBS.ERP.DataAccess
 {
     public class CategoriesDAL: baseDAL
     {
-        public  List<Category> GetCategories()
+        public CategoriesDAL() { }
+
+        public CategoriesDAL(string connectionStringCompanyDatabase, string userAccount, string roleId, string companyDBProvider, string companyCode)
+            : base(connectionStringCompanyDatabase, userAccount, roleId, companyDBProvider, companyCode)
+        {
+
+        }
+       
+        public List<Category> GetCategories()
         {
             List<Category> objCategories = new List<Category>();
 
