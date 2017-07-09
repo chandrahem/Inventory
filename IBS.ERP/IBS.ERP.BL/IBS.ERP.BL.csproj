@@ -66,6 +66,7 @@
     <Compile Include="PermissionBL.cs" />
     <Compile Include="MenuBL.cs" />
     <Compile Include="ProductBL.cs" />
+    <Compile Include="StoresBL.cs" />
     <Compile Include="SuppliersBL.cs" />
     <Compile Include="UserBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

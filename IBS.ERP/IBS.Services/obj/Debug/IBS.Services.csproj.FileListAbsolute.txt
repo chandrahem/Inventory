@@ -65,3 +65,4 @@ E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAcc
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.DataAccess.pdb
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.Services\bin\IBS.ERP.Models.pdb
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.Services\obj\Debug\IBS.Services.csprojResolveAssemblyReference.cache

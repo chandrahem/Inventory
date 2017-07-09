@@ -71,6 +71,7 @@
     <Compile Include="MenuDAL.cs" />
     <Compile Include="PermissionDAL.cs" />
     <Compile Include="ProductDAL.cs" />
+    <Compile Include="StoresDAL.cs" />
     <Compile Include="SuppliersDAL.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>

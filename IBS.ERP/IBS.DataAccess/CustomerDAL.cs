@@ -33,7 +33,7 @@ namespace IBS.ERP.DataAccess
 
                        cmd.Connection = con;
 
-                       cmd.Parameters.AddWithValue("@StartRowIndex", 1);
+                       cmd.Parameters.AddWithValue("@StartRowIndex", objPaging.StartRowIndex);
                        cmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
                        cmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
                        cmd.Parameters.AddWithValue("@Order", objPaging.Order);

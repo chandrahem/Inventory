@@ -376,3 +376,12 @@ E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP\obj\Debug\IBS.ERP.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP\obj\Debug\IBS.ERP.pdb
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.WebHost.dll
 E:\My Projects\IBS.ERP_Github\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.WebHost.xml
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Net.Http.Formatting.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Cors.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.Cors.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.WebHost.dll
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Net.Http.Formatting.xml
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.xml
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.Cors.xml
+D:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\bin\System.Web.Http.WebHost.xml
