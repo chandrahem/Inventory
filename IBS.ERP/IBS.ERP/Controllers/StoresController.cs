@@ -57,20 +57,34 @@ namespace IBS.ERP.Controllers
             return SaveStores(id, collection);
         }
 
-         [HttpGet]
-        [HasPermission("DELETE_Stores")]
-        public ActionResult Delete(int id)
-        {
-            StoresBL storeBL = new StoresBL();
-            ReturnResult result = storeBL.DeleteStore(id);
+         
+        //[HasPermission("DELETE_Stores")]
+        //public ActionResult Delete(int id)
+        //{
+        //    StoresBL storeBL = new StoresBL();
+        //    ReturnResult result = storeBL.DeleteStore(id);
 
-            //if (!result.IsSuccess)
-            //{
-            //    TempData["Message"] = "Error while deleting category.";
-            //}
+        //    //if (!result.IsSuccess)
+        //    //{
+        //    //    TempData["Message"] = "Error while deleting category.";
+        //    //}
+        //   // return RedirectToAction("Index");
+        //    return View();
+        //}
+
+         
+         public ActionResult Delete(int id)
+         {
+             StoresBL storeBL = new StoresBL();
+             ReturnResult result = storeBL.DeleteStore(id);
+
+             if (!result.IsSuccess)
+             {
+                 TempData["Message"] = "Error while deleting category.";
+             }
             return RedirectToAction("Index");
-            //return View();
-        }
+             //    return View();
+         }
 
         private ActionResult SaveStores(int id, FormCollection collection)
         {

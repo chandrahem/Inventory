@@ -18,7 +18,7 @@
         type="text/javascript"></script>
 
 <link href="~/Scripts/jtable/themes/metro/blue/jtable.min.css" rel="stylesheet" />
-<input type="button" id="btnGet" value="Get Current Time" />
+<input type="button" id="btnCreateCustomer" value="Create Customer" />
 
 
 
@@ -110,6 +110,18 @@
     <div id="dvCustomer" style="width:1200px; margin-left:70px;"></div>
 
     <div id="dvGlobalPopUp"></div>
+
+<script>
+    $(document).ready(function () {
+  
+        $("#btnCreateCustomer").click(function () {
+
+        openCustomerDetailPop(0);
+    });
+
+    });
+
+</script>
 
 
     <script type="text/javascript">
@@ -247,27 +259,35 @@
                 contentType: "application/json; charset=utf-8",
                 responseType: "json",
                 success: function (data) {
+                    if (CustomerID == 0) {
+                        $ticketDetail.empty();
+                        bindCountries($openCustomerDetailPop.find('#ddlcountry'), 0);
+                        $ticketDetail.append($openCustomerDetailPop);
+                    }
 
-                    $ticketDetail.empty();
+                    else {
 
-                    $openCustomerDetailPop.find('#txtCompanyName').val(data.Records.CompanyName);
-                    $openCustomerDetailPop.find('#txtCustomerBarCode').val(data.Records.CustomerBarCode);
-                    $openCustomerDetailPop.find('#txtCustomerCode').val(data.Records.CustomerCode);
-                    $openCustomerDetailPop.find('#txtContactName').val(data.Records.ContactName);
-                    $openCustomerDetailPop.find('#txtContactTitle').val(data.Records.ContactTitle);
+                        $ticketDetail.empty();
 
-                    $openCustomerDetailPop.find('#txtRegion').val(data.Records.Region);
+                        $openCustomerDetailPop.find('#txtCompanyName').val(data.Records.CompanyName);
+                        $openCustomerDetailPop.find('#txtCustomerBarCode').val(data.Records.CustomerBarCode);
+                        $openCustomerDetailPop.find('#txtCustomerCode').val(data.Records.CustomerCode);
+                        $openCustomerDetailPop.find('#txtContactName').val(data.Records.ContactName);
+                        $openCustomerDetailPop.find('#txtContactTitle').val(data.Records.ContactTitle);
 
-                    $openCustomerDetailPop.find('#txtPostalCode').val(data.Records.PostalCode);
-                    $openCustomerDetailPop.find('#txtPhone').val(data.Records.Phone);
-                    $openCustomerDetailPop.find('#txtAddress').val(data.Records.Address);
+                        $openCustomerDetailPop.find('#txtRegion').val(data.Records.Region);
 
-                    bindCountries($openCustomerDetailPop.find('#ddlcountry'), data.Records.Country);
-                    bindStateForEdit($openCustomerDetailPop.find('#ddlstate'), data.Records.Country, data.Records.State)
-                    bindCityForEdit($openCustomerDetailPop.find('#ddlcity'), data.Records.State, data.Records.City)
-                    //$openCustomerDetailPop.find('#Status').attr('disabled', 'disabled');
+                        $openCustomerDetailPop.find('#txtPostalCode').val(data.Records.PostalCode);
+                        $openCustomerDetailPop.find('#txtPhone').val(data.Records.Phone);
+                        $openCustomerDetailPop.find('#txtAddress').val(data.Records.Address);
 
-                    $ticketDetail.append($openCustomerDetailPop);
+                        bindCountries($openCustomerDetailPop.find('#ddlcountry'), data.Records.Country);
+                        bindStateForEdit($openCustomerDetailPop.find('#ddlstate'), data.Records.Country, data.Records.State)
+                        bindCityForEdit($openCustomerDetailPop.find('#ddlcity'), data.Records.State, data.Records.City)
+                        //$openCustomerDetailPop.find('#Status').attr('disabled', 'disabled');
+
+                        $ticketDetail.append($openCustomerDetailPop);
+                    }
                 },
                 error: function (result) {
                     $ticketDetail.html('Server communication error occurred.');
@@ -416,8 +436,6 @@
         $(document).ready(function () {
 
         });
-
-
 
         function EditCustomerInformation(CustomerID, CustomerCode, CustomerBarCode, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, State) {
 

@@ -137,10 +137,23 @@ namespace IBS.ERP.DataAccess
       #region Edit Customer Information
       public static int EditCustomerInformation(Int32 CustomerID, string CustomerCode, string CustomerBarCode, string CompanyName, string ContactName, string ContactTitle, string Address, string City, string Region, string PostalCode, string Country, string Phone, string State)
       {
-          int Edit = 0; 
+          int Edit = 0;
+          string StoredProcedureName = " ";
+              if(CustomerID==0)
+              {
+
+                  StoredProcedureName = "ERP_Save_Customer";
+
+              }
+              else
+              {
+
+                  StoredProcedureName = "ERP_Edit_Customer";
+
+              }
      try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_Edit_Customer))
+              using (SqlCommand cmd = new SqlCommand(StoredProcedureName))
               {
                   using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
                   {
