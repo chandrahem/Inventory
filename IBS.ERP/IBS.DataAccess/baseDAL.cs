@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using IBS.ERP.Models;
+using System.Data.SqlClient;
 namespace IBS.ERP.DataAccess
 {
     public  class baseDAL
@@ -19,7 +20,8 @@ namespace IBS.ERP.DataAccess
        public List<IBSparameter> parameters = null;
        public string CompanyCode { get; set; }
        private string strProviderName = string.Empty;//"SqlClient";
-       private System.Data.Common.DbConnection conn;
+       public DbConnection conn;
+       public SqlCommand sqlcmd;
        private ConnectionStringSettings conS = null;
       
       public baseDAL()
@@ -91,19 +93,7 @@ namespace IBS.ERP.DataAccess
               SetUserManagementDatabaseInfo();
           }
       }
-      private ConnectionStringSettings getConnection(string connectionName, string connectionString, string providerName)
-      {
-          ConnectionStringSettings conS = new ConnectionStringSettings(connectionName, connectionString, providerName); 
-          return conS;
-      }
-
-      private void SetUserManagementDatabaseInfo()
-      {
-          conS = ConfigurationManager.ConnectionStrings["IBSUserMasterConnectionString"];
-          strProviderName = conS.ProviderName;
-          conn = CreateDbConnection(strProviderName, conS.ConnectionString);
-          DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
-      }
+     
 
       // Given a provider name and connection string, 
        //http://odetodata.com/2015/05/a-better-way-to-handle-role-permissions-in-asp-net-identity-isinrole-vs-haspermission/
@@ -120,9 +110,20 @@ namespace IBS.ERP.DataAccess
            {
                try
                {
-                   DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
-
-                   conn = factory.CreateConnection();
+                   if(DBProvider==ProviderName.SqlClient) //if sql server
+                   {
+                       conn = new SqlConnection();//factory.CreateConnection();
+                       sqlcmd = new  SqlCommand();
+                       sqlcmd.Connection =(SqlConnection)conn;
+                       
+                   }
+                   else // if my sql server
+                   {
+                       DbProviderFactory factory = DbProviderFactories.GetFactory(providerName);
+                       conn = factory.CreateConnection();
+                       //cmd = conn.CreateCommand();
+                   }
+                   
                    conn.ConnectionString = connectionString;
                }
                catch (Exception ex)
@@ -276,6 +277,21 @@ namespace IBS.ERP.DataAccess
            }
            return dataSet;
 
+       }
+
+       private ConnectionStringSettings getConnection(string connectionName, string connectionString, string providerName)
+       {
+           ConnectionStringSettings conS = new ConnectionStringSettings(connectionName, connectionString, providerName);
+           return conS;
+       }
+
+       private void SetUserManagementDatabaseInfo()
+       {
+           conS = ConfigurationManager.ConnectionStrings["IBSUserMasterConnectionString"];
+           strProviderName = conS.ProviderName;
+           conn = CreateDbConnection(strProviderName, conS.ConnectionString);
+           //cmd = conn.CreateCommand();
+           DBProvider = (ProviderName)Enum.Parse(typeof(ProviderName), getLastNameOfDBProvider(strProviderName));
        }
 
         /// <summary>

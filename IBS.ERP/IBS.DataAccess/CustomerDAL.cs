@@ -9,65 +9,59 @@ using IBS.ERP.Models;
 
 namespace IBS.ERP.DataAccess
 {
-   public class CustomerDAL
+    public class CustomerDAL : baseDAL
     {
        private const string SP_CustomerInformation = "[SP_CustomerInformation]";
        private const string ERP_GetCustomer = "[ERP_GetCustomer]";
        private const string ERP_Edit_Customer = "[ERP_Edit_Customer]";
        private const string ERP_DeleteCustomer = "[ERP_DeleteCustomer]";
        private const string ERP_GetCountries = "[ERP_GetCountries]";
-      public static List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
+      public  List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
        {
            List<CustomerMaster> ListReq = null;
            TotalRows = 0;
            try
            {
-               using (SqlCommand cmd = new SqlCommand(SP_CustomerInformation))
+               sqlcmd.CommandText = SP_CustomerInformation;
+               sqlcmd.CommandType = CommandType.StoredProcedure;
+
+               if (conn.State == ConnectionState.Closed)
+                   conn.Open();
+
+               sqlcmd.Parameters.AddWithValue("@StartRowIndex", objPaging.StartRowIndex);
+               sqlcmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
+               sqlcmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
+               sqlcmd.Parameters.AddWithValue("@Order", objPaging.Order);
+               sqlcmd.Parameters.AddWithValue("@CompanyName", CompanyName);
+               sqlcmd.Parameters.AddWithValue("@CustomerCode", CustomerCode);
+               sqlcmd.Parameters.AddWithValue("@Phone", Phone);
+               sqlcmd.Parameters.AddWithValue("@City", City);
+               sqlcmd.Parameters.AddWithValue("@State", Convert.ToString(State));
+               sqlcmd.Parameters.AddWithValue("@Country", Country);
+               sqlcmd.Parameters.AddWithValue("@FromDate", FromDate);
+               sqlcmd.Parameters.AddWithValue("@ToDate", ToDate);
+               sqlcmd.Parameters.AddWithValue("@PostalCode", PostalCode);
+               sqlcmd.Parameters.AddWithValue("@ContactName1", ContactName1);
+
+               using (SqlDataReader sdr = sqlcmd.ExecuteReader())
                {
-                   using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
+                   ListReq = cCommon.GetList<CustomerMaster>(sdr);
+                   if (sdr.NextResult())
                    {
-                       cmd.CommandType = CommandType.StoredProcedure;
-
-                       if (con.State == ConnectionState.Closed)
-                           con.Open();
-
-                       cmd.Connection = con;
-
-                       cmd.Parameters.AddWithValue("@StartRowIndex", objPaging.StartRowIndex);
-                       cmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
-                       cmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
-                       cmd.Parameters.AddWithValue("@Order", objPaging.Order);
-                       cmd.Parameters.AddWithValue("@CompanyName", CompanyName);
-                       cmd.Parameters.AddWithValue("@CustomerCode", CustomerCode);                       
-                       cmd.Parameters.AddWithValue("@Phone", Phone);
-                       cmd.Parameters.AddWithValue("@City", City);
-                       cmd.Parameters.AddWithValue("@State", Convert.ToString(State));
-                       cmd.Parameters.AddWithValue("@Country", Country);
-                       cmd.Parameters.AddWithValue("@FromDate", FromDate);
-                       cmd.Parameters.AddWithValue("@ToDate", ToDate);
-                       cmd.Parameters.AddWithValue("@PostalCode", PostalCode);
-                       cmd.Parameters.AddWithValue("@ContactName1", ContactName1);
-
-                       using (SqlDataReader sdr = cmd.ExecuteReader())
+                       while (sdr.Read())
                        {
-                           ListReq = cCommon.GetList<CustomerMaster>(sdr);
-                           if (sdr.NextResult())
-                           {
-                               while (sdr.Read())
-                               {
-                                   TotalRows = Int32.Parse(sdr["TotalRows"].ToString());
-                               }
-                           }
-                           sdr.Close();
-                           sdr.Dispose();
+                           TotalRows = Int32.Parse(sdr["TotalRows"].ToString());
                        }
                    }
-                   cmd.Dispose();
+                   sdr.Close();
+                   sdr.Dispose();
                }
+
+             
            }
            catch (SqlException ex)
            {
-              string cc= ex.Message;
+               Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + "," + CustomerCode + ")", ex);
            }
            finally
            {
@@ -76,26 +70,19 @@ namespace IBS.ERP.DataAccess
        }
 
 
-      public static CustomerMaster GetCustomerInfo(int CustomerID)
+      public  CustomerMaster GetCustomerInfo(int CustomerID)
       {
           CustomerMaster obj = null; ;
           try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_GetCustomer))
-              {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-                      cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                      sqlcmd.CommandText = ERP_GetCustomer;
+                      sqlcmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                      sqlcmd.CommandType = CommandType.StoredProcedure;
+              
+                      if (conn.State == ConnectionState.Closed)
+                          conn.Open();
 
-                     
-                      cmd.CommandType = CommandType.StoredProcedure;
-
-                      if (con.State == ConnectionState.Closed)
-                      {
-                          cmd.Connection = con;
-                          cmd.Connection.Open();
-                      }
-                      using (SqlDataReader sdr = cmd.ExecuteReader())
+                      using (SqlDataReader sdr = sqlcmd.ExecuteReader())
                       {
                           while (sdr.Read())
                           {
@@ -117,17 +104,16 @@ namespace IBS.ERP.DataAccess
                           sdr.Close();
                           sdr.Dispose();
                       }
-                  }
-                  cmd.Dispose();
-              }
+                 
+             
           }
           catch (SqlException sqlEx)
           {
-
+              Logger.Error("CustomerDAL.GetCustomerInfo(" + LoggedInUser + "," + CompanyCode + "," + CustomerID + ")", sqlEx);
           }
           catch (Exception ex)
           {
-
+              Logger.Error("CustomerDAL.GetCustomerInfo(" + LoggedInUser + "," + CompanyCode + "," + CustomerID + ")", ex);
           }
           finally { }
 
@@ -135,10 +121,10 @@ namespace IBS.ERP.DataAccess
       }
 
       #region Edit Customer Information
-      public static int EditCustomerInformation(Int32 CustomerID, string CustomerCode, string CustomerBarCode, string CompanyName, string ContactName, string ContactTitle, string Address, string City, string Region, string PostalCode, string Country, string Phone, string State)
+      public int EditCustomerInformation(Int32 CustomerID, string CustomerCode, string CustomerBarCode, string CompanyName, string ContactName, string ContactTitle, string Address, string City, string Region, string PostalCode, string Country, string Phone, string State)
       {
-          int Edit = 0;
-          string StoredProcedureName = " ";
+              int Edit = 0;
+              string StoredProcedureName = string.Empty;
               if(CustomerID==0)
               {
 
@@ -151,46 +137,42 @@ namespace IBS.ERP.DataAccess
                   StoredProcedureName = "ERP_Edit_Customer";
 
               }
-     try
-          {
-              using (SqlCommand cmd = new SqlCommand(StoredProcedureName))
+         try
               {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-
-                      cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
-                      cmd.Parameters.AddWithValue("@CustomerCode", CustomerCode);
-                      cmd.Parameters.AddWithValue("@CustomerBarCode", CustomerBarCode);
-                      cmd.Parameters.AddWithValue("@CompanyName", CompanyName);
-                      cmd.Parameters.AddWithValue("@ContactName", ContactName);
-                      cmd.Parameters.AddWithValue("@ContactTitle", ContactTitle);
-                      cmd.Parameters.AddWithValue("@Address", Address);
-                      cmd.Parameters.AddWithValue("@City", City);
-                      cmd.Parameters.AddWithValue("@Region", Region);
-                      cmd.Parameters.AddWithValue("@Country", Country);
-                      cmd.Parameters.AddWithValue("@PostalCode", PostalCode);
-                      cmd.Parameters.AddWithValue("@Phone", Phone);
-                      cmd.Parameters.AddWithValue("@State", State);
+                      sqlcmd.CommandText = StoredProcedureName;
+                      sqlcmd.Parameters.AddWithValue("@CustomerID", CustomerID);
+                      sqlcmd.Parameters.AddWithValue("@CustomerCode", CustomerCode);
+                      sqlcmd.Parameters.AddWithValue("@CustomerBarCode", CustomerBarCode);
+                      sqlcmd.Parameters.AddWithValue("@CompanyName", CompanyName);
+                      sqlcmd.Parameters.AddWithValue("@ContactName", ContactName);
+                      sqlcmd.Parameters.AddWithValue("@ContactTitle", ContactTitle);
+                      sqlcmd.Parameters.AddWithValue("@Address", Address);
+                      sqlcmd.Parameters.AddWithValue("@City", City);
+                      sqlcmd.Parameters.AddWithValue("@Region", Region);
+                      sqlcmd.Parameters.AddWithValue("@Country", Country);
+                      sqlcmd.Parameters.AddWithValue("@PostalCode", PostalCode);
+                      sqlcmd.Parameters.AddWithValue("@Phone", Phone);
+                      sqlcmd.Parameters.AddWithValue("@State", State);
                       
-                      cmd.CommandType = CommandType.StoredProcedure;
-                      if (con.State == ConnectionState.Closed)
-                      {
-                          cmd.Connection = con;
-                          cmd.Connection.Open();
-                      }
-                       Edit = cmd.ExecuteNonQuery();
+                      sqlcmd.CommandType = CommandType.StoredProcedure;
+
+                      if (conn.State == ConnectionState.Closed)
+                          conn.Open();
+                       Edit = sqlcmd.ExecuteNonQuery();
                      
-                      cmd.Connection.Close();
-                      cmd.Connection.Dispose();
-                  }
-                  cmd.Dispose();
-              }
+                      sqlcmd.Connection.Close();
+                      sqlcmd.Connection.Dispose();
+                  
           }
           catch (SqlException ex)
           {
-              
 
+              Logger.Error("CustomerDAL.EditCustomerInformation(" + LoggedInUser + "," + CompanyCode + "," + CustomerCode + ")", ex);
           }
+         catch (Exception ex)
+         {
+             Logger.Error("CustomerDAL.EditCustomerInformation(" + LoggedInUser + "," + CompanyCode + "," + CustomerCode + ")", ex);
+         }
           finally
           {
           }
@@ -200,37 +182,27 @@ namespace IBS.ERP.DataAccess
 
 
       #region Delete Customer Information
-      public static int DeleteCustomerInformation(Int32 CustomerID)
+      public  int DeleteCustomerInformation(Int32 CustomerID)
       {
           int Delete = 0;
           try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_DeleteCustomer))
-              {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-
-                      cmd.Parameters.AddWithValue("@CustomerID", CustomerID);
-                    
-
-                      cmd.CommandType = CommandType.StoredProcedure;
-                      if (con.State == ConnectionState.Closed)
-                      {
-                          cmd.Connection = con;
-                          cmd.Connection.Open();
-                      }
-                      Delete = cmd.ExecuteNonQuery();
-
-                      cmd.Connection.Close();
-                      cmd.Connection.Dispose();
-                  }
-                  cmd.Dispose();
-              }
+            sqlcmd.CommandText = ERP_DeleteCustomer;
+            sqlcmd.CommandType = CommandType.StoredProcedure;
+            if (conn.State == ConnectionState.Closed)
+            conn.Open();
+            Delete = sqlcmd.ExecuteNonQuery();
+            sqlcmd.Connection.Close();
+                   
           }
           catch (SqlException ex)
           {
+              Logger.Error("CustomerDAL.DeleteCustomerInformation(" + LoggedInUser + "," + CompanyCode + "," + CustomerID + ")", ex);
 
-
+          }
+          catch (Exception ex)
+          {
+              Logger.Error("CustomerDAL.DeleteCustomerInformation(" + LoggedInUser + "," + CompanyCode + "," + CustomerID + ")", ex);
           }
           finally
           {
@@ -240,30 +212,30 @@ namespace IBS.ERP.DataAccess
       #endregion
 
       #region Get Countries
-      public static List<CountryStateCity> CountryNames()
+      public  List<CountryStateCity> CountryNames()
       {
 
           List<CountryStateCity> ListCountry = null;
           try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_GetCountries))
-              {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-                      cmd.Parameters.AddWithValue("@Flag", "C");
-                      cmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.CommandText = ERP_GetCountries;
+             
+            sqlcmd.Parameters.AddWithValue("@Flag", "C");
+            sqlcmd.CommandType = CommandType.StoredProcedure;
 
-                      if (con.State == ConnectionState.Closed)
-                          con.Open();
+            if (conn.State == ConnectionState.Closed)
+            conn.Open();
 
-                      cmd.Connection = con;
-                      ListCountry = cCommon.GetList<CountryStateCity>(cmd.ExecuteReader());
-                  }
-              }
+            ListCountry = cCommon.GetList<CountryStateCity>(sqlcmd.ExecuteReader());
+                 
           }
           catch (SqlException ex)
           {
-              //LogError.Current().Log(ex, "0");
+              Logger.Error("CustomerDAL.Countries(" + LoggedInUser + "," + CompanyCode + ")", ex);
+          }
+          catch (Exception ex)
+          {
+              Logger.Error("CustomerDAL.Countries(" + LoggedInUser + "," + CompanyCode + ")", ex);
           }
           finally
           {
@@ -275,31 +247,31 @@ namespace IBS.ERP.DataAccess
 
 
       #region Get States
-      public static List<CountryStateCity> StateNames(int CountryID)
+      public  List<CountryStateCity> StateNames(int CountryID)
       {
 
           List<CountryStateCity> ListCountry = null;
           try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_GetCountries))
-              {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-                      cmd.Parameters.AddWithValue("@Flag", "S");
-                      cmd.Parameters.AddWithValue("@CountryID", CountryID);
-                      cmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.CommandText = ERP_GetCountries;
+            
+            sqlcmd.Parameters.AddWithValue("@Flag", "S");
+            sqlcmd.Parameters.AddWithValue("@CountryID", CountryID);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
 
-                      if (con.State == ConnectionState.Closed)
-                          con.Open();
-
-                      cmd.Connection = con;
-                      ListCountry = cCommon.GetList<CountryStateCity>(cmd.ExecuteReader());
-                  }
-              }
+            if (conn.State == ConnectionState.Closed)
+            conn.Open();
+                      
+            ListCountry = cCommon.GetList<CountryStateCity>(sqlcmd.ExecuteReader());
+                 
           }
           catch (SqlException ex)
           {
-              //LogError.Current().Log(ex, "0");
+              Logger.Error("CustomerDAL.StateNames(" + LoggedInUser + "," + CompanyCode + ", "+CountryID+")", ex);
+          }
+          catch (Exception ex)
+          {
+              Logger.Error("CustomerDAL.StateNames(" + LoggedInUser + "," + CompanyCode + ", " + CountryID + ")", ex);
           }
           finally
           {
@@ -310,31 +282,30 @@ namespace IBS.ERP.DataAccess
       #endregion
 
       #region Get City
-      public static List<CountryStateCity> CityNames(int StateID)
+      public  List<CountryStateCity> CityNames(int StateID)
       {
 
           List<CountryStateCity> ListCountry = null;
           try
           {
-              using (SqlCommand cmd = new SqlCommand(ERP_GetCountries))
-              {
-                  using (SqlConnection con = new SqlConnection(@"Data Source=ibsmssqlserver.cezeuiz2wro3.ap-south-1.rds.amazonaws.com,1433; Initial Catalog=ABCInventory;User ID=hem;Password=hemchandra;"))
-                  {
-                      cmd.Parameters.AddWithValue("@Flag", "Ci");
-                      cmd.Parameters.AddWithValue("@StateID", StateID);
-                      cmd.CommandType = CommandType.StoredProcedure;
+            sqlcmd.CommandText = ERP_GetCountries;
+            sqlcmd.Parameters.AddWithValue("@Flag", "Ci");
+            sqlcmd.Parameters.AddWithValue("@StateID", StateID);
+            sqlcmd.CommandType = CommandType.StoredProcedure;
 
-                      if (con.State == ConnectionState.Closed)
-                          con.Open();
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
 
-                      cmd.Connection = con;
-                      ListCountry = cCommon.GetList<CountryStateCity>(cmd.ExecuteReader());
-                  }
-              }
+            ListCountry = cCommon.GetList<CountryStateCity>(sqlcmd.ExecuteReader());
+                
           }
           catch (SqlException ex)
           {
               //LogError.Current().Log(ex, "0");
+          }
+          catch (Exception ex)
+          {
+              Logger.Error("CustomerDAL.CityNames(" + LoggedInUser + "," + CompanyCode + ", " + StateID + ")", ex);
           }
           finally
           {
