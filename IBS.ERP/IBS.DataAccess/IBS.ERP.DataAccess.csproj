@@ -67,6 +67,7 @@
     <Compile Include="CategoriesDAL.cs" />
     <Compile Include="CompanyDAL.cs" />
     <Compile Include="CustomerDAL.cs" />
+    <Compile Include="EmployeeDAL.cs" />
     <Compile Include="IBSparameter.cs" />
     <Compile Include="MenuDAL.cs" />
     <Compile Include="PermissionDAL.cs" />
