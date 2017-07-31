@@ -546,7 +546,7 @@
 
                 },
                 recordsLoaded: function (event, data) {
-
+                    gg();
                 },
                 fields: {
 
@@ -617,6 +617,29 @@
 
             });
         }
+
+        function gg()
+        {
+            
+
+           // $('.jtable tbody').children(rowIndex).children('th').eq(1).hide();
+
+            //$('.jtable > tbody > tr').each(function (index) {
+            //    var age = $(this).find("th").eq(1).hide();
+            //    alert(age);// for testing purpose
+            //});
+            var id = 1
+            if(id == 1)
+            {
+            $('#dvCustomer').jtable('changeColumnVisibility', 'CustomerCode', 'hidden');
+            }
+
+            //$('#dvCustomer').jtable('changeColumnVisibility', { columnName: 'CustomerCode', visibility: 'hidden' })
+
+            
+        }
+
+
 
         $('#ddlCountrySearch').change(function ()
         {

@@ -11,6 +11,14 @@ namespace IBS.ERP.DataAccess
 {
   public  class EmployeeDAL : baseDAL
     {
+
+      public EmployeeDAL() { }
+
+      public EmployeeDAL(string connectionStringCompanyDatabase, string userAccount, string roleId, string companyDBProvider, string companyCode)
+            : base(connectionStringCompanyDatabase, userAccount, roleId, companyDBProvider, companyCode)
+        {
+
+        }
         public List<EmployeeMaster> GetEmployees()
         {
             List<EmployeeMaster> objEmployees = new List<EmployeeMaster>();
@@ -147,7 +155,7 @@ namespace IBS.ERP.DataAccess
 
                          
                     IBSparameter Country_Parameter = new IBSparameter();
-                    Country_Parameter.ParameterName = "@PostalCode";
+                    Country_Parameter.ParameterName = "@Country";
                     Country_Parameter.DataType = DbType.String;
                     Country_Parameter.Value = employee.PostalCode;
                     Country_Parameter.Direction = ParameterDirection.Input;
