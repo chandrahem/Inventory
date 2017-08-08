@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IBS.ERP.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,10 @@ namespace IBS.ERP.Controllers
         // GET: IBSHome
         public ActionResult Index()
         {
-            return View();
+            LoginViewModel loginview = new LoginViewModel();
+            loginview.Password = "abc";
+            loginview.UserAccount = "abc@abc.com";
+            return View(loginview);
         }
 
         // GET: IBSHome/Details/5

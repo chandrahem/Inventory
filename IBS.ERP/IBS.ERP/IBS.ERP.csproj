@@ -220,6 +220,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -461,6 +462,7 @@
     <Content Include="Scripts\Jtable\themes\metro\lightgray\jtable.css" />
     <Content Include="Scripts\Jtable\themes\metro\lightgray\jtable.min.css" />
     <Content Include="Scripts\Jtable\themes\metro\lightgray\loading.gif" />
+    <Content Include="Scripts\Jtable\themes\metro\metroBlue\jquery-ui.css" />
     <Content Include="Scripts\Jtable\themes\metro\pink\jtable.css" />
     <Content Include="Scripts\Jtable\themes\metro\pink\jtable.min.css" />
     <Content Include="Scripts\Jtable\themes\metro\pink\loading.gif" />

@@ -9,8 +9,14 @@ namespace IBS.ERP
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                "~/Scripts/jquery-1.10.2.min.js", 
+                "~/Scripts/jquery-ui-1.10.2.min.js"
+                        ));
 
+            
+           
+
+            
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -23,9 +29,17 @@ namespace IBS.ERP
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jtable").Include(
+                "~/Scripts/jtable/jquery.jtable.js",
+                "~/Scripts/jtable/external/json2.js",
+                "~/Scripts/jtable/extensions/jquery.jtable.aspnetpagemethods.js"
+                       ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/site.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Scripts/Jtable/themes/metro/metroBlue/jquery-ui.css",
+                      "~/Scripts/jtable/themes/metro/blue/jtable.min.css"                     ));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

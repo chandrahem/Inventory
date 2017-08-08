@@ -11,14 +11,18 @@ namespace IBS.ERP.Controllers
     public class CustomerController : Controller
     {
         // GET: Customer
+       [HasPermission("READ_CUSTOMER")]
         public ActionResult Index()
         {
             return View();
         }
+
+        [HasPermission("READ_CUSTOMER")]
         public JsonResult GetStudentMarks(int jtStartIndex, int jtPageSize, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
         {
             List<CustomerMaster> documentList = null;
             int totalRows = 0;
+            bool  blnCreate=false, blnEdit = false, blnDelete= false;
 
 
             jtStartIndex = jtStartIndex == 0 ? 0 : (jtStartIndex / jtPageSize + 1);
@@ -32,7 +36,7 @@ namespace IBS.ERP.Controllers
             };
             CustomerBL obj = new CustomerBL();
 
-            var docList = obj.GetCandidateDocuments(objpaging, out totalRows, CompanyName,  CustomerCode,  ContactName,  Phone,  City,  State,  Country,  FromDate,  ToDate,  PostalCode);
+            var docList = obj.GetCandidateDocuments(objpaging, out totalRows, CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode, out blnCreate , out blnEdit , out blnDelete );
 
             documentList = docList.ToList<CustomerMaster>();
             // var docList =  cMasterServices.Current().GetCandidateDocuments( objpaging,out totalRows);
@@ -40,7 +44,7 @@ namespace IBS.ERP.Controllers
             try
             {
 
-                return Json(new { Result = "OK", Records = documentList, TotalRecordCount = totalRows }, JsonRequestBehavior.AllowGet);
+                return Json(new { Result = "OK", Records = documentList, TotalRecordCount = totalRows, createPermission = blnCreate,updatePermission= blnEdit, deletePermission= blnDelete}, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
@@ -50,6 +54,7 @@ namespace IBS.ERP.Controllers
 
 
         [HttpGet]
+        [HasPermission("READ_CUSTOMER")]
         public JsonResult GetCustomer(int CustomerID)
         {
 
@@ -75,6 +80,7 @@ namespace IBS.ERP.Controllers
         }
 
         [HttpGet]
+        [HasPermission("UPDATE_CUSTOMER")]
         public JsonResult EditCustomerInformation(Int32 CustomerID, string CustomerCode, string CustomerBarCode, string CompanyName, string ContactName, string ContactTitle, string Address, string City, string Region, string PostalCode, string Country, string Phone,string State)
         // public JsonResult EditCustomerInformation(string CustomerCode, string CustomerBarCode)
         {
@@ -91,7 +97,8 @@ namespace IBS.ERP.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpGet]
+        [HasPermission("DELETE_CUSTOMER")]
         public JsonResult DeleteCustomerInformation(int CustomerID)
         {
             CustomerMaster CustomerInfo = new CustomerMaster();

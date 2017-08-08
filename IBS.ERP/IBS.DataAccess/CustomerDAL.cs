@@ -16,10 +16,13 @@ namespace IBS.ERP.DataAccess
        private const string ERP_Edit_Customer = "[ERP_Edit_Customer]";
        private const string ERP_DeleteCustomer = "[ERP_DeleteCustomer]";
        private const string ERP_GetCountries = "[ERP_GetCountries]";
-      public  List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
+      public  List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
        {
            List<CustomerMaster> ListReq = null;
            TotalRows = 0;
+           blnCreate = false;
+           blnEdit = false;
+           blnDelete = false;
            try
            {
                sqlcmd.CommandText = SP_CustomerInformation;
@@ -28,6 +31,7 @@ namespace IBS.ERP.DataAccess
                if (conn.State == ConnectionState.Closed)
                    conn.Open();
 
+               sqlcmd.Parameters.AddWithValue("@UserAccount", LoggedInUser);
                sqlcmd.Parameters.AddWithValue("@StartRowIndex", objPaging.StartRowIndex);
                sqlcmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
                sqlcmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
@@ -42,7 +46,8 @@ namespace IBS.ERP.DataAccess
                sqlcmd.Parameters.AddWithValue("@ToDate", ToDate);
                sqlcmd.Parameters.AddWithValue("@PostalCode", PostalCode);
                sqlcmd.Parameters.AddWithValue("@ContactName1", ContactName1);
-
+               
+               
                using (SqlDataReader sdr = sqlcmd.ExecuteReader())
                {
                    ListReq = cCommon.GetList<CustomerMaster>(sdr);
@@ -51,6 +56,9 @@ namespace IBS.ERP.DataAccess
                        while (sdr.Read())
                        {
                            TotalRows = Int32.Parse(sdr["TotalRows"].ToString());
+                           blnCreate = Convert.ToBoolean(sdr["CreatePermission"]);
+                           blnEdit = Convert.ToBoolean(sdr["UpdatePermission"]);
+                           blnDelete = Convert.ToBoolean(sdr["DeletePermission"]);
                        }
                    }
                    sdr.Close();
