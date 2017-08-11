@@ -5,6 +5,10 @@ using System.Web;
 using System.Web.Mvc;
 using IBS.ERP.BL;
 using IBS.ERP.Models;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace IBS.ERP.Controllers
 {
@@ -18,12 +22,10 @@ namespace IBS.ERP.Controllers
         }
 
         [HasPermission("READ_CUSTOMER")]
-        public JsonResult GetStudentMarks(int jtStartIndex, int jtPageSize, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
+       public async Task<JsonResult> GetStudentMarks(int jtStartIndex, int jtPageSize, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
         {
-            List<CustomerMaster> documentList = null;
             int totalRows = 0;
-            bool  blnCreate=false, blnEdit = false, blnDelete= false;
-
+            bool blnCreate = false, blnEdit = false, blnDelete = false, blnView=false;
 
             jtStartIndex = jtStartIndex == 0 ? 0 : (jtStartIndex / jtPageSize + 1);
 
@@ -31,25 +33,70 @@ namespace IBS.ERP.Controllers
             {
                 MaxRows = jtPageSize,
                 Order = "DESC",
-                OrderBy = "CustomerID",//"CP.UpdatedDate",
-                StartRowIndex = jtStartIndex
+                OrderBy = "CustomerID",
+                StartRowIndex = jtStartIndex,
+                FromDate = FromDate,
+                ToDate=ToDate
             };
-            CustomerBL obj = new CustomerBL();
 
-            var docList = obj.GetCandidateDocuments(objpaging, out totalRows, CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode, out blnCreate , out blnEdit , out blnDelete );
-
-            documentList = docList.ToList<CustomerMaster>();
-            // var docList =  cMasterServices.Current().GetCandidateDocuments( objpaging,out totalRows);
-            // ApplicationDbContext db = new ApplicationDbContext();
-            try
+            CustomerMaster objCustomer = new CustomerMaster() { CompanyName = CompanyName, CustomerCode = CustomerCode, ContactName = ContactName, Phone=Phone, City=City,State=State, Country=Country, PostalCode=PostalCode };
+           // Currently we are passing two objects 1. customer and Paging , if we need to pass more objects other than Paging then we need to wrap those objects and passed. 
+            //same like  we are passing wraping objects in webapi (WebAPIPassingClass)
+            WebAPI webapi = new WebAPI();
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIPartners", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objCustomer, objpaging);
+            if (response.IsSuccessStatusCode)
             {
+              
+                //get the headers values
+                HttpHeaders headers = response.Headers;
+                IEnumerable<string> values;
+                if (headers.TryGetValues("TotalRows", out values))
+                {
+                    totalRows = Convert.ToInt32(values.First());
+                }
 
-                return Json(new { Result = "OK", Records = documentList, TotalRecordCount = totalRows, createPermission = blnCreate,updatePermission= blnEdit, deletePermission= blnDelete}, JsonRequestBehavior.AllowGet);
+                if (headers.TryGetValues("CreatePermission", out values))
+                {
+                    blnCreate = Convert.ToBoolean(values.First());
+                }
+
+                if (headers.TryGetValues("UpdatePermission", out values))
+                {
+                    blnEdit = Convert.ToBoolean(values.First());
+                }
+
+                if (headers.TryGetValues("DeletePermission", out values))
+                {
+                    blnDelete = Convert.ToBoolean(values.First());
+                }
+
+                if (headers.TryGetValues("ViewPermission", out values))
+                {
+                    blnView = Convert.ToBoolean(values.First());
+                }
+                
+                // get the content values
+                var data = await response.Content.ReadAsStringAsync();
+
+                // convert json in IEnumerable object list of CustomerMaster
+                var customerList = JsonConvert.DeserializeObject<IEnumerable<CustomerMaster>>(data);
+
+                try
+                {
+
+                    return Json(new { Result = "OK", Records = customerList, TotalRecordCount = totalRows, createPermission = blnCreate, updatePermission = blnEdit, deletePermission = blnDelete, viewPermission = blnView }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { Result = "ERROR", Message = ex.Message });
+                }
             }
-            catch (Exception ex)
+            else
             {
-                return Json(new { Result = "ERROR", Message = ex.Message });
+                TempData["CreateCategoryMessage"] = "Error while saving data.";
+                return null;
             }
+
         }
 
 

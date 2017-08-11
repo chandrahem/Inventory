@@ -8,6 +8,7 @@ using IBS.ERP.BL;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 namespace IBS.ERP.Controllers
 {
     public class CategoryController : Controller
@@ -21,6 +22,16 @@ namespace IBS.ERP.Controllers
             HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Get, "APICategory", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]));
             if (response.IsSuccessStatusCode)
             {
+
+                //get the headers values
+                HttpHeaders headers = response.Headers;
+                IEnumerable<string> values;
+                if (headers.TryGetValues("PageNo", out values))
+                {
+                    string session = values.First();
+                }
+
+                // get the content values
                 var data = await response.Content.ReadAsStringAsync();
                                
                 // to convert json  in data table

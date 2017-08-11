@@ -11,7 +11,9 @@ namespace IBS.ERP.Models
     {
        
       
-      
+      /// <summary>
+      /// page number
+      /// </summary>
         public Int32 StartRowIndex { get; set; }
         /// <summary>
         /// Maximum rows per page
@@ -28,6 +30,12 @@ namespace IBS.ERP.Models
         /// </summary>
         
         public String Order { get; set; }
+
+        public String FromDate { get; set; }
+
+        public String ToDate { get; set; }
+
+        
 
     }
 

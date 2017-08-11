@@ -11,18 +11,27 @@ namespace IBS.ERP.DataAccess
 {
     public class CustomerDAL : baseDAL
     {
+         public CustomerDAL() { }
+
+         public CustomerDAL(string connectionStringCompanyDatabase, string userAccount, string roleId, string companyDBProvider, string companyCode)
+            : base(connectionStringCompanyDatabase, userAccount, roleId, companyDBProvider, companyCode)
+        {
+
+        }
+
        private const string SP_CustomerInformation = "[SP_CustomerInformation]";
        private const string ERP_GetCustomer = "[ERP_GetCustomer]";
        private const string ERP_Edit_Customer = "[ERP_Edit_Customer]";
        private const string ERP_DeleteCustomer = "[ERP_DeleteCustomer]";
        private const string ERP_GetCountries = "[ERP_GetCountries]";
-      public  List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
+       public List<CustomerMaster> GetPartnersList(Paging objPaging, out int TotalRows, out bool blnCreate, out bool blnEdit, out bool blnDelete, out bool blnView, CustomerMaster objCustomer )   //Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
        {
            List<CustomerMaster> ListReq = null;
            TotalRows = 0;
            blnCreate = false;
            blnEdit = false;
            blnDelete = false;
+           blnView = false;
            try
            {
                sqlcmd.CommandText = SP_CustomerInformation;
@@ -36,16 +45,16 @@ namespace IBS.ERP.DataAccess
                sqlcmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
                sqlcmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
                sqlcmd.Parameters.AddWithValue("@Order", objPaging.Order);
-               sqlcmd.Parameters.AddWithValue("@CompanyName", CompanyName);
-               sqlcmd.Parameters.AddWithValue("@CustomerCode", CustomerCode);
-               sqlcmd.Parameters.AddWithValue("@Phone", Phone);
-               sqlcmd.Parameters.AddWithValue("@City", City);
-               sqlcmd.Parameters.AddWithValue("@State", Convert.ToString(State));
-               sqlcmd.Parameters.AddWithValue("@Country", Country);
-               sqlcmd.Parameters.AddWithValue("@FromDate", FromDate);
-               sqlcmd.Parameters.AddWithValue("@ToDate", ToDate);
-               sqlcmd.Parameters.AddWithValue("@PostalCode", PostalCode);
-               sqlcmd.Parameters.AddWithValue("@ContactName1", ContactName1);
+               sqlcmd.Parameters.AddWithValue("@CompanyName", objCustomer.CompanyName);
+               sqlcmd.Parameters.AddWithValue("@CustomerCode", objCustomer.CustomerCode);
+               sqlcmd.Parameters.AddWithValue("@Phone", objCustomer.Phone);
+               sqlcmd.Parameters.AddWithValue("@City", objCustomer.City);
+               sqlcmd.Parameters.AddWithValue("@State", Convert.ToString(objCustomer.State));
+               sqlcmd.Parameters.AddWithValue("@Country", objCustomer.Country);
+               sqlcmd.Parameters.AddWithValue("@FromDate", objPaging.FromDate);
+               sqlcmd.Parameters.AddWithValue("@ToDate", objPaging.ToDate);
+               sqlcmd.Parameters.AddWithValue("@PostalCode", objCustomer.PostalCode);
+               sqlcmd.Parameters.AddWithValue("@ContactName1", objCustomer.ContactName);
                
                
                using (SqlDataReader sdr = sqlcmd.ExecuteReader())
@@ -69,7 +78,7 @@ namespace IBS.ERP.DataAccess
            }
            catch (SqlException ex)
            {
-               Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + "," + CustomerCode + ")", ex);
+               Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + "," + objCustomer.CustomerCode + ")", ex);
            }
            finally
            {

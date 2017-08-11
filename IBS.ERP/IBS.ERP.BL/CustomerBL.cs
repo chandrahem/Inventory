@@ -15,11 +15,11 @@ namespace IBS.ERP.BL
        {
            objcustomerDal = new CustomerDAL();
        }
-       public List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode, out bool  blnCreate, out bool blnEdit , out bool blnDelete)
-       {
-           CustomerDAL objcustomerDal = new CustomerDAL();
-           return objcustomerDal.GetCandidateDocuments(objPaging, out  TotalRows, CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode, out blnCreate, out blnEdit ,out  blnDelete);
-       }
+       //public List<CustomerMaster> GetCandidateDocuments(Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode, out bool  blnCreate, out bool blnEdit , out bool blnDelete)
+       //{
+       //    CustomerDAL objcustomerDal = new CustomerDAL();
+       //    return objcustomerDal.GetPartnersList(objPaging, out  TotalRows, CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode, out blnCreate, out blnEdit ,out  blnDelete);
+       //}
 
        public CustomerMaster GetCustomerInfo(int CustomerID)
        {
