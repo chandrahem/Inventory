@@ -6,6 +6,8 @@ using System.Data.Common;
 using System.Linq;
 using System.Web;
 using IBS.ERP.Models;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace IBS.ERP.DataAccess
 {
@@ -19,53 +21,63 @@ namespace IBS.ERP.DataAccess
         {
 
         }
-        public List<EmployeeMaster> GetEmployees()
-        {
-            List<EmployeeMaster> objEmployees = new List<EmployeeMaster>();
+      private const string ERP_Get_Employee = "[ERP_Get_Employee]";
+      public List<EmployeeMaster> GetEmployeesList(Paging objPaging, out int TotalRows, EmployeeMaster objEmployee)   //Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
+      {
+          List<EmployeeMaster> ListReq = null;
+          TotalRows = 0;        
+          try
+          {
+              sqlcmd.CommandText = ERP_Get_Employee;
+              sqlcmd.CommandType = CommandType.StoredProcedure;
 
-            try
-            {
+              if (conn.State == ConnectionState.Closed)
+                  conn.Open();
 
-                if (DBProvider == ProviderName.SqlClient)
-                {
-
-                    IBSparameter Userparameter = new IBSparameter();
-                    Userparameter.ParameterName = "@UserAccount";
-                    Userparameter.DataType = DbType.String;
-                    Userparameter.Value = LoggedInUser;
-                    Userparameter.Direction = ParameterDirection.Input;
-                    parameters.Add(Userparameter);
-
-                }
-
-                DataSet dsEmployee = null;
-                dsEmployee = GetDataSet("ERP_Get_Employees", parameters);
-
-                var MenuCollection = from EmployeeMaster in dsEmployee.Tables[0].AsEnumerable()
-                                     select new EmployeeMaster
-                                     {
-                                         EmployeeId = EmployeeMaster.Field<int>("EmployeeId"),
-                                         EmpCode = EmployeeMaster.Field<String>("EmpCode"),
-                                         LastName = EmployeeMaster.Field<String>("LastName"),
-                                         FirstName = EmployeeMaster.Field<String>("FirstName"),
-                                         Address = EmployeeMaster.Field<String>("Address"),
-                                         City = EmployeeMaster.Field<String>("City"),
-                                         
-                                     };
-                objEmployees = MenuCollection.ToList<EmployeeMaster>();
+              sqlcmd.Parameters.AddWithValue("@UserAccount", LoggedInUser);
+              sqlcmd.Parameters.AddWithValue("@StartRowIndex", objPaging.StartRowIndex);
+              sqlcmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
+              sqlcmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
+              sqlcmd.Parameters.AddWithValue("@Order", objPaging.Order);
+              sqlcmd.Parameters.AddWithValue("@EmpCode", objEmployee.EmpCode);
+              sqlcmd.Parameters.AddWithValue("@FirstName", objEmployee.FirstName);
+              //sqlcmd.Parameters.AddWithValue("@Title", objEmployee.Title);
+              //sqlcmd.Parameters.AddWithValue("@City", objEmployee.City);
+              //sqlcmd.Parameters.AddWithValue("@Address", objEmployee.Address);
+              //sqlcmd.Parameters.AddWithValue("@Region", objEmployee.Region);
+              //sqlcmd.Parameters.AddWithValue("@FromDate", objEmployee.LastName);
+              //sqlcmd.Parameters.AddWithValue("@ToDate", objPaging.ToDate);
+              //sqlcmd.Parameters.AddWithValue("@PostalCode", objCustomer.PostalCode);
+              //sqlcmd.Parameters.AddWithValue("@ContactName1", objCustomer.ContactName);
 
 
+              using (SqlDataReader sdr = sqlcmd.ExecuteReader())
+              {
+                  ListReq = cCommon.GetList<EmployeeMaster>(sdr);
+                  if (sdr.NextResult())
+                  {
+                      while (sdr.Read())
+                      {
+                          TotalRows = Int32.Parse(sdr["TotalRows"].ToString());
+                      
+                      }
+                  }
+                  sdr.Close();
+                  sdr.Dispose();
+              }
 
-            }
 
-            catch (Exception ex)
-            {
-                //Logger.Error("CategoriesDAL.objCategories(" + LoggedInUser + "," + CompanyCode + ")", ex);
-            }
+          }
+          catch (SqlException ex)
+          {
+              //Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + "," + objCustomer.CustomerCode + ")", ex);
+          }
+          finally
+          {
+          }
+          return ListReq;
+      }
 
-            return objEmployees;
-
-        }
 
         public ReturnResult SaveEmployee(EmployeeMaster employee)
         {
@@ -307,6 +319,56 @@ namespace IBS.ERP.DataAccess
             }
 
             return EmployeeList[0];
+
+        }
+
+
+
+        public List<EmployeeMaster> BindEMPCode_Autocomplete(EmployeeMaster objEmployee)
+        {
+            List<EmployeeMaster> EmployeeList = new List<EmployeeMaster>();
+            // List<IBSparameter> parameters = new List<IBSparameter>();
+
+            try
+            {
+
+                if (DBProvider == ProviderName.SqlClient)
+                {
+
+                    IBSparameter Userparameter = new IBSparameter();
+                    Userparameter.ParameterName = "@UserAccount";
+                    Userparameter.DataType = DbType.String;
+                    Userparameter.Value = LoggedInUser;
+                    Userparameter.Direction = ParameterDirection.Input;
+                    parameters.Add(Userparameter);
+
+                    IBSparameter EmployeeIDParameter = new IBSparameter();
+                    EmployeeIDParameter.ParameterName = "@EMPCode";
+                    EmployeeIDParameter.DataType = DbType.String;
+                    EmployeeIDParameter.Value = objEmployee.EmpCode;
+                    EmployeeIDParameter.Direction = ParameterDirection.Input;
+                    parameters.Add(EmployeeIDParameter);
+
+                }
+
+                DataSet dsEmployee = null;
+                dsEmployee = GetDataSet("ERP_AutoComplete_BindEMPCode", parameters);
+
+                var CompanyCollection = from EmployeeMaster in dsEmployee.Tables[0].AsEnumerable()
+                                        select new EmployeeMaster
+                                        {
+                                            EmpCode = EmployeeMaster.Field<string>("EmpCode"),
+                                           
+                                        };
+                EmployeeList = CompanyCollection.ToList<EmployeeMaster>();
+            }
+
+            catch (Exception ex)
+            {
+                //Logger.Error("CategoriesDAL.GetCategoryById(" + LoggedInUser + "," + CompanyCode + "," + categoryId + ")", ex);
+            }
+
+            return EmployeeList;
 
         }
     }

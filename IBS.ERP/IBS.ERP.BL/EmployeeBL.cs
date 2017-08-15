@@ -10,13 +10,13 @@ namespace IBS.ERP.BL
 {
    public class EmployeeBL
     {
-       public List<EmployeeMaster> GetEmployees()
-        {
+       //public List<EmployeeMaster> GetEmployees()
+       // {
           
-            EmployeeDAL Employees = new EmployeeDAL();
-            return Employees.GetEmployees();
+       //     EmployeeDAL Employees = new EmployeeDAL();
+       //     return Employees.GetEmployees();
 
-        }
+       // }
        public ReturnResult SaveEmployee(EmployeeMaster employee)
         {
             EmployeeDAL Employees = new EmployeeDAL();

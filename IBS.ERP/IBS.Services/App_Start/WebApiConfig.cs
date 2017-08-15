@@ -12,6 +12,9 @@ namespace IBS.Services
     {
         public static void Register(HttpConfiguration config)
         {
+            //Cors code
+            
+    
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();

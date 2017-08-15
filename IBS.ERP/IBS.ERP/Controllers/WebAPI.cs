@@ -78,7 +78,7 @@ namespace IBS.ERP.Controllers
                     {
                         //StringContent content = new StringContent(JsonConvert.SerializeObject(objectName), Encoding.UTF8, "application/json");
                         response = await client.PutAsync(apiPath, content);
-                    } // get data
+                    } // get dataD:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\Views\Category\Delete.cshtml
                     else if (apiCallType == APICallType.Get)
                     {
                         response = await client.GetAsync(webApiBaseUrl + apiPath);

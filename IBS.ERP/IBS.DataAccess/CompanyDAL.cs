@@ -11,6 +11,13 @@ namespace IBS.ERP.DataAccess
 {
    public class CompanyDAL:baseDAL
     {
+        public CompanyDAL() { }
+
+        public CompanyDAL(string connectionStringCompanyDatabase, string userAccount, string roleId, string companyDBProvider, string companyCode)
+            : base(connectionStringCompanyDatabase, userAccount, roleId, companyDBProvider, companyCode)
+        {
+
+        }
        public List<CompanyMaster> GetCompanies()
        {
            List<CompanyMaster> objCompanies = new List<CompanyMaster>();

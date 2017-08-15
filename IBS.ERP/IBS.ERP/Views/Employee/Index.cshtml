@@ -6,57 +6,182 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
 
-        <th>
-            @Html.DisplayNameFor(model => model.EmpCode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.City)
-        </th>
-        
-    
-    </tr>
+<div id="main" runat="server" style="width: 100%;  float: left;">
 
-    @foreach (var item in Model)
-    {
-        <tr>
+    <div>
+        <fieldset>
+            <legend>Filters:</legend>
+            <table class="border01" style="width: 100%;">
+                <tr>
+                    <td align="right">
+                        Employee Code:
+                    </td>
+                    <td>
+                        <input type="text" id="txtEmpCode">
+                    </td>
+                    <td align="right">
+                       Employee First Name:
+                    </td>
+                    <td>
+                        <input type="text" id="txtFirstName">
+                    </td>
+                </tr>              
 
-            <td>
-                @Html.DisplayFor(modelItem => item.EmpCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+                <tr>
+                    <td align="center" colspan="4">
+                        <input type="button" id="btnSearch" value="Search" />
+                        &nbsp;
+                        <input type="button" id="btnReset" value="Clear" />
+                    </td>
+
+                    <td align="right" valign="bottom"></td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+
+<div id="dvEmployee">
+</div>
+
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#btnSearch").click(function () {
+            alert('1');
+            var EMPCode = $('#txtEmpCode').val();
+            var FirstName = $('#txtFirstName').val();
+            GetEmployees(EMPCode, FirstName);
+        });
+    });
+ function GetEmployees(EMPCode, FirstName) {
+
+        //debugger;
+     $('#dvEmployee').jtable({
+            title: 'Employee Details',
+            paging: true,
+            selecting: true,
+            pageSize: 10,
+            sorting: false,
+            columnResizable: false,
+            columnSelectable: false,
+            customButtons: {
+                items: [
+                    {
+                        icon: 'Images/edit.png', // used ../default-16x16.png by default
+                        text: 'New button',
+                        click: function (record) {
+                            //alert(record.data);
+                        },
+                        position: 'left' // right by default
+                    },
+                     {
+                         icon: 'Images/delete.png', // used ../default-16x16.png by default
+                         text: 'New button',
+                         click: function (record) {
+                             //alert(record);
+                         },
+                         position: 'left' // right by default
+                     }
+                ]
+            },
+
+            actions: {
+                listAction: 'Employee/GetEmployees'
+
+                //deleteAction: 'Customer/DeleteCustomerInformation'
+
+
+            },
+            recordsLoaded: function (event, data) {
+                
+            },
+            fields: {
+
+                EmpCode: {
+                    title: 'Employee Code',
+                    width: '30%'
+                },
+                FirstName: {
+                    title: 'First Name',
+                    width: '30%'
+                },
+                LastName: {
+                    title: 'Last Name',
+                    width: '30%'
+                },
+                Title: {
+                    title: 'Title',
+                    width: '30%'
+
+                },
+                City: {
+                    title: 'Contact&nbsp;Title',
+                    width: '50%'
+
+                },
+                Address: {
+                    title: 'Address',
+                    width: '30%'
+                },
+                Region: {
+                    title: 'Region',
+                    width: '30%'
+                }
+
+            }
+        });
+
+        //$('#dvCustomer').jtable('reload');
+     $('#dvEmployee').jtable('load', {
+         EMPCode: EMPCode,
+            FirstName: FirstName
+        });
     }
+    </script>
 
-</table>
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#txtEmpCode").autocomplete({
+
+          
+
+            source: function (request, response) {
+
+                $.ajax({
+
+                    type: "POST",
+
+                    contentType: "application/json; charset=utf-8",
+
+                    url: "Employee/GetEmpCode",
+
+                    data: "{'EmpCode':'" + document.getElementById('txtEmpCode').value + "'}",
+
+                    dataType: "json",
+
+                    success: function (data) {
+                        response($.map(data.Records, function (item) {
+                            return {
+                                label: item.EmpCode,
+                                value: item.EmpCode
+                            }
+                        }))                      
+
+                    },
+
+                    error: function (result) {
+
+                        alert("Error......");
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    });
+    </script>
