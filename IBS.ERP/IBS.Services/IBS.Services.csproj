@@ -204,6 +204,7 @@
     <Compile Include="Controllers\APICategoryController.cs" />
     <Compile Include="Controllers\APICompanyController.cs" />
     <Compile Include="Controllers\APIEmployeeController.cs" />
+    <Compile Include="Controllers\APILookupController.cs" />
     <Compile Include="Controllers\APIPartnersController.cs" />
     <Compile Include="Controllers\CommonAPI.cs" />
     <Compile Include="Controllers\HomeController.cs" />

@@ -16,88 +16,114 @@ namespace IBS.ERP.Controllers
     {
         // GET: Customer
        [HasPermission("READ_CUSTOMER")]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
-        }
-
-        [HasPermission("READ_CUSTOMER")]
-       public async Task<JsonResult> GetStudentMarks(int jtStartIndex, int jtPageSize, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
-        {
-            int totalRows = 0;
-            bool blnCreate = false, blnEdit = false, blnDelete = false, blnView=false;
-
-            jtStartIndex = jtStartIndex == 0 ? 0 : (jtStartIndex / jtPageSize + 1);
-
-            Paging objpaging = new Paging
-            {
-                MaxRows = jtPageSize,
-                Order = "DESC",
-                OrderBy = "CustomerID",
-                StartRowIndex = jtStartIndex,
-                FromDate = FromDate,
-                ToDate=ToDate
-            };
-
-            CustomerMaster objCustomer = new CustomerMaster() { CompanyName = CompanyName, CustomerCode = CustomerCode, ContactName = ContactName, Phone=Phone, City=City,State=State, Country=Country, PostalCode=PostalCode };
-           // Currently we are passing two objects 1. customer and Paging , if we need to pass more objects other than Paging then we need to wrap those objects and passed. 
-            //same like  we are passing wraping objects in webapi (WebAPIPassingClass)
-            WebAPI webapi = new WebAPI();
-            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIPartners", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objCustomer, objpaging);
+           
+           // get the search fields
+           WebAPI webapi = new WebAPI();
+           HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Get, "APILookup", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "CustomerSearch");
             if (response.IsSuccessStatusCode)
             {
-              
-                //get the headers values
-                HttpHeaders headers = response.Headers;
-                IEnumerable<string> values;
-                if (headers.TryGetValues("TotalRows", out values))
-                {
-                    totalRows = Convert.ToInt32(values.First());
-                }
-
-                if (headers.TryGetValues("CreatePermission", out values))
-                {
-                    blnCreate = Convert.ToBoolean(values.First());
-                }
-
-                if (headers.TryGetValues("UpdatePermission", out values))
-                {
-                    blnEdit = Convert.ToBoolean(values.First());
-                }
-
-                if (headers.TryGetValues("DeletePermission", out values))
-                {
-                    blnDelete = Convert.ToBoolean(values.First());
-                }
-
-                if (headers.TryGetValues("ViewPermission", out values))
-                {
-                    blnView = Convert.ToBoolean(values.First());
-                }
-                
                 // get the content values
                 var data = await response.Content.ReadAsStringAsync();
 
                 // convert json in IEnumerable object list of CustomerMaster
-                var customerList = JsonConvert.DeserializeObject<IEnumerable<CustomerMaster>>(data);
+               var lookupList = JsonConvert.DeserializeObject<IEnumerable<Lookup>>(data);
 
-                try
+
+               //using viewbag  
+               ViewData["FieldDropdown"] = new SelectList(lookupList.ToList(), "Code", "Text");  
+               return View(lookupList);
+
+            }
+           else
+                return View();
+            
+        }
+
+
+      
+    [HasPermission("READ_CUSTOMER")]
+    //public async Task<JsonResult> GetStudentMarks(int jtStartIndex, int jtPageSize, string CompanyName, string CustomerCode, string ContactName, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode)
+    public async Task<JsonResult> GetGridData(int jtStartIndex, int jtPageSize, string searchField1,string searchField1Value, string searchField2, string searchField2Value, string condition )
+    {
+            try
+            {
+                int totalRows = 0;
+                bool blnCreate = false, blnEdit = false, blnDelete = false, blnView=false;
+
+                jtStartIndex = jtStartIndex == 0 ? 0 : (jtStartIndex / jtPageSize + 1);
+
+                Paging objpaging = new Paging
                 {
+                    MaxRows = jtPageSize,
+                    Order = "DESC",
+                    OrderBy = "Partnerid",
+                    StartRowIndex = jtStartIndex,
+                    //FromDate = FromDate,
+                    //ToDate=ToDate
+                };
+
+                Search objSearch = new Search() { SearchField1 = searchField1, SearchField1Value = searchField1Value, SearchField2 = searchField2, SearchField2Value = searchField2Value, Condition = condition, SearchOn = "Customer" };
+               // Currently we are passing two objects 1. customer and Paging , if we need to pass more objects other than Paging then we need to wrap those objects and passed. 
+                //same like  we are passing wraping objects in webapi (WebAPIPassingClass)
+                WebAPI webapi = new WebAPI();
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIPartners", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objSearch, objpaging);
+                if (response.IsSuccessStatusCode)
+                {
+              
+                    //get the headers values
+                    HttpHeaders headers = response.Headers;
+                    IEnumerable<string> values;
+                    if (headers.TryGetValues("TotalRows", out values))
+                    {
+                        totalRows = Convert.ToInt32(values.First());
+                    }
+
+                    if (headers.TryGetValues("CreatePermission", out values))
+                    {
+                        blnCreate = Convert.ToBoolean(values.First());
+                    }
+
+                    if (headers.TryGetValues("UpdatePermission", out values))
+                    {
+                        blnEdit = Convert.ToBoolean(values.First());
+                    }
+
+                    if (headers.TryGetValues("DeletePermission", out values))
+                    {
+                        blnDelete = Convert.ToBoolean(values.First());
+                    }
+
+                    if (headers.TryGetValues("ViewPermission", out values))
+                    {
+                        blnView = Convert.ToBoolean(values.First());
+                    }
+                
+                    // get the content values
+                    var data = await response.Content.ReadAsStringAsync();
+
+                    // convert json in IEnumerable object list of CustomerMaster
+                    var customerList = JsonConvert.DeserializeObject<IEnumerable<CustomerMaster>>(data);
 
                     return Json(new { Result = "OK", Records = customerList, TotalRecordCount = totalRows, createPermission = blnCreate, updatePermission = blnEdit, deletePermission = blnDelete, viewPermission = blnView }, JsonRequestBehavior.AllowGet);
+               
                 }
-                catch (Exception ex)
+                else
                 {
-                    return Json(new { Result = "ERROR", Message = ex.Message });
+               
+                    TempData["CustomerErrorMessage"] = "Error while retrieving data.";
+                    return null;
                 }
-            }
-            else
-            {
-                TempData["CreateCategoryMessage"] = "Error while saving data.";
-                return null;
-            }
-
         }
+        catch (Exception ex)
+        {
+            Logger.Error("IBS.ERP.CustomerController.GetGridData" , ex);
+            TempData["CustomerErrorMessage"] = "Error while retrieving data.";
+            return null;  //return Json(new { Result = "ERROR", Message = ex.Message });
+        }
+
+  }
 
 
         [HttpGet]

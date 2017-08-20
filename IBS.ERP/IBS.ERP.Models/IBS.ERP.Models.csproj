@@ -75,6 +75,7 @@
     <Compile Include="Models\CountryStateCity.cs" />
     <Compile Include="Models\CustomerMaster.cs" />
     <Compile Include="Models\EmployeeMaster.cs" />
+    <Compile Include="Models\Lookup.cs" />
     <Compile Include="Models\Menus.cs" />
     <Compile Include="Models\Paging.cs" />
     <Compile Include="Models\Productmaster.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Models\Purchase\PurchaseDetails.cs" />
     <Compile Include="Models\Purchase\PurchaseReturn.cs" />
     <Compile Include="Models\Purchase\PurchaseReturnDetail.cs" />
+    <Compile Include="Models\Search.cs" />
     <Compile Include="Models\User\RoleMaster.cs" />
     <Compile Include="Models\Sale\Productsforsale.cs" />
     <Compile Include="Models\Sale\Sales.cs" />

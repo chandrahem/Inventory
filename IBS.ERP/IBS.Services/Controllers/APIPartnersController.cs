@@ -21,10 +21,10 @@ namespace IBS.Services.Controllers
             CommonAPI commonApi = new CommonAPI();
             commonApi.getHeaderValues(Request.Headers, out connectionString, out userAccount, out roleId, out companyCode, out DBProviderName);
             CustomerDAL categroyDAL = new CustomerDAL(connectionString, userAccount, roleId, DBProviderName, companyCode);
-            var categories = categroyDAL.GetPartnersList(objPaging, out TotalRows, out blnCreate , out blnEdit, out blnDelete , out blnView, objCustomer);
+           // var categories = categroyDAL.GetPartnersList(objPaging, out TotalRows, out blnCreate , out blnEdit, out blnDelete , out blnView, objCustomer);
 
             // Create the response
-            var response = Request.CreateResponse(HttpStatusCode.OK, categories);
+            var response = Request.CreateResponse(HttpStatusCode.OK, objCustomer);
             // Set headers for paging
             response.Headers.Add("TotalRows", TotalRows.ToString());
             response.Headers.Add("CreatePermission", blnCreate.ToString());
@@ -48,27 +48,82 @@ namespace IBS.Services.Controllers
         // POST: api/APIPartners
         public HttpResponseMessage Post([FromBody]JObject compoundObject)
         {
-            int TotalRows = 0;
-            bool blnCreate = false, blnEdit = false, blnDelete = false, blnView = false;
-
-            // Extract your concrete objects from the json object.
-            var objCustomer = compoundObject["objectName"].ToObject<CustomerMaster>();
-            var objPaging = compoundObject["paging"].ToObject<Paging>();
-
+            HttpResponseMessage response=null ;
             
-            CommonAPI commonApi = new CommonAPI();
-            commonApi.getHeaderValues(Request.Headers, out connectionString, out userAccount, out roleId, out companyCode, out DBProviderName);
-            CustomerDAL customerDAL = new CustomerDAL(connectionString, userAccount, roleId, DBProviderName, companyCode);
-            List<CustomerMaster> objCustomerList = customerDAL.GetPartnersList(objPaging, out TotalRows, out blnCreate, out blnEdit, out blnDelete, out blnView, objCustomer);
-          
-            // Create the response
-            var response = Request.CreateResponse(HttpStatusCode.OK, objCustomerList);
-            // Set headers for paging
-            response.Headers.Add("TotalRows", TotalRows.ToString());
-            response.Headers.Add("CreatePermission", blnCreate.ToString());
-            response.Headers.Add("UpdatePermission", blnEdit.ToString());
-            response.Headers.Add("DeletePermission", blnDelete.ToString());
-            response.Headers.Add("ViewPermission", blnView.ToString());
+            try
+            {
+                int TotalRows = 0;
+                string object1Name = string.Empty, object2Name = string.Empty;
+                bool blnCreate = false, blnEdit = false, blnDelete = false, blnView = false;
+                CustomerMaster objCustomer=null; Search objSearch=null; Paging objPaging=null;
+               
+                // Extract your concrete objects from the json object.
+                if (Request.Headers.Contains("object1Name"))
+                {
+                    IEnumerable<string> headerValues = Request.Headers.GetValues("object1Name");
+                    var className1 = headerValues.FirstOrDefault();
+
+                    if (className1.Equals("CustomerMaster"))
+                    {
+                        objCustomer = compoundObject["object1"].ToObject<CustomerMaster>();
+                    }
+                    else if (className1.ToString().Equals("Search"))
+                    {
+                        objSearch = compoundObject["object1"].ToObject<Search>();
+                    }
+                    else if (className1.Equals("Paging"))
+                    {
+                        objPaging = compoundObject["object1"].ToObject<Paging>();
+                    }
+                }
+
+                if (Request.Headers.Contains("object2Name"))
+                {
+                    IEnumerable<string> headerValues = Request.Headers.GetValues("object2Name");
+                    var className2= headerValues.FirstOrDefault();
+
+                    if (className2.Equals("CustomerMaster"))
+                    {
+                        objCustomer = compoundObject["object2"].ToObject<CustomerMaster>();
+                    }
+                    else if (className2.Equals("Search"))
+                    {
+                        objSearch = compoundObject["object2"].ToObject<Search>();
+                    }
+                    else if (className2.Equals("Paging"))
+                    {
+                        objPaging = compoundObject["object2"].ToObject<Paging>();
+                    }
+                }
+               
+                CommonAPI commonApi = new CommonAPI();
+                commonApi.getHeaderValues(Request.Headers, out connectionString, out userAccount, out roleId, out companyCode, out DBProviderName);
+                CustomerDAL customerDAL = new CustomerDAL(connectionString, userAccount, roleId, DBProviderName, companyCode);
+                
+                //////////// Get  the customer List /////////////////
+                List<CustomerMaster> objCustomerList=null;
+                if (objPaging != null && objSearch !=null)
+                {
+                    objCustomerList = customerDAL.GetPartnersList(objPaging, out TotalRows, out blnCreate, out blnEdit, out blnDelete, out blnView, objSearch);
+                    // Create the response
+                    response = Request.CreateResponse(HttpStatusCode.OK, objCustomerList);
+                    // Set headers for paging
+                    response.Headers.Add("TotalRows", TotalRows.ToString());
+                    response.Headers.Add("CreatePermission", blnCreate.ToString());
+                    response.Headers.Add("UpdatePermission", blnEdit.ToString());
+                    response.Headers.Add("DeletePermission", blnDelete.ToString());
+                    response.Headers.Add("ViewPermission", blnView.ToString());
+                }
+                //////////// Save the customer list/////////////////
+                
+            }
+            catch(Exception ex)
+            {
+                // log error
+                Logger.Error("APIPartnersController.Post(" + userAccount + "," + companyCode + ")", ex);
+                 response = Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+
 
             return response;
         }

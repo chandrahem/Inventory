@@ -4,142 +4,156 @@
     //Layout = null;
 }
 
+@*<script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>*@    
+
 <script>
     $(document).ready(function () {
 
-        $("#btnCreateCustomer").hide();
+        //alert($("#btnCreateCustomer"));
+       // $("#btnCreateCustomer").on("click", add);
+       // $("#btnCreateCustomer").hide();
 
-        $("#btnCreateCustomer").click(function () {
+        //$("#btnCreateCustomer").click(function () {
 
-            openCustomerDetailPop(0);
-        });
+        //    openCustomerDetailPop();
+        //});
 
+
+        //$("#btnCreateCustomer").click(function () {
+        //    alert('opn');
+        //    //$('#CustomerModal').dialog('open');
+        //    $('#CustomerModal').modal('show');
+        //});
+
+        //function add() {
+        //    alert('add123');
+        //    $('#modal-content').modal('show');
+        //    //$("#CustomerModal").modal("show");
+        //}
+        
     });
 
 </script>
 
-
 <script type="text/javascript">
 
-    function openCustomerDetailPop(CustomerID) {
+   
 
-        //, Address, CompanyName, ContactName, City, CustomerBarCode, CustomerCode, ContactTitle, Region
-        //ID: TicketID
-        var $DDLCountry = "<select id='ddlcountry'></select>";
-        var $DDLState = "<select id='ddlstate'></select>";
-        var $DDLCity = "<select id='ddlcity'></select>";
+    function openCustomerDetailPop() {
 
-        var $ticketDetail = $('<div id="ticketDetailForward">Loading...</div>');
-        var $openCustomerDetailPop = $('<div id="divticketDetailPopup">' +
+        alert('openCustomerDetailPop');
+        $("#CustomerModal").modal("show");
+        var CustomerID = 0;
 
-        '<div  style="height:6px;">' + '</div>' +
+        //var $DDLCountry = "<select id='ddlcountry'></select>";
+        //var $DDLState = "<select id='ddlstate'></select>";
+        //var $DDLCity = "<select id='ddlcity'></select>";
 
-        ' <table style="border:1px solid #c6d0da; width: 100%;" cellpadding="5">' +
-                                            '<tr><td style="width:180px;"><label><b>CustomerCode:&nbsp;</b></label></td>' +
+        //var $ticketDetail = $('<div id="ticketDetailForward">Loading...</div>');
+        //var $openCustomerDetailPop = $('<div id="divticketDetailPopup">' +
 
-                                                '<td colspan="3"><input type="text" id="txtCustomerCode"></td>' +
+        //'<div  style="height:6px;">' + '</div>' +
 
-                                                '<td><label><b>CustomerBarCode.:&nbsp;</b></label></td>' +
+        //' <table style="border:1px solid #c6d0da; width: 100%;" cellpadding="5">' +
+        //                                    '<tr><td style="width:180px;"><label><b>CustomerCode:&nbsp;</b></label></td>' +
 
-                                                 '<td ><input type="text" id="txtCustomerBarCode"></td>' +
-                                                  '</tr>' +
-                                            '<tr> <td style="width:130px;"><label><b>CompanyName:&nbsp;</b></label></td>' +
+        //                                        '<td colspan="3"><input type="text" id="txtCustomerCode"></td>' +
 
-                                                '<td colspan="3"><input type="text" id="txtCompanyName"></td>' +
-                                                '<td style="width:130px;"><label><b> ContactName:&nbsp;</b></label></td>' +
-                                                 '<td><input type="text" id="txtContactName"></td>' +
-                                            '</tr>' +
+        //                                        '<td><label><b>CustomerBarCode.:&nbsp;</b></label></td>' +
 
-                                            '<tr><td><label><b> ContactTitle:&nbsp;</b></label></td>' +
-                                            '<td colspan="3"><input type="text" id="txtContactTitle"></td>' +
+        //                                         '<td ><input type="text" id="txtCustomerBarCode"></td>' +
+        //                                          '</tr>' +
+        //                                    '<tr> <td style="width:130px;"><label><b>CompanyName:&nbsp;</b></label></td>' +
 
-                                           ' <td style="width:130px;"><label><b> Phone:&nbsp;</b></label><span class="mandatory"></span></td>' +
+        //                                        '<td colspan="3"><input type="text" id="txtCompanyName"></td>' +
+        //                                        '<td style="width:130px;"><label><b> ContactName:&nbsp;</b></label></td>' +
+        //                                         '<td><input type="text" id="txtContactName"></td>' +
+        //                                    '</tr>' +
 
-                                             '<td><input type="text" id="txtPhone"></td>' +
+        //                                    '<tr><td><label><b> ContactTitle:&nbsp;</b></label></td>' +
+        //                                    '<td colspan="3"><input type="text" id="txtContactTitle"></td>' +
 
-                                            '</tr>' +
+        //                                   ' <td style="width:130px;"><label><b> Phone:&nbsp;</b></label><span class="mandatory"></span></td>' +
 
-                                          '</table>' +
-                                             '<div class="clear10"></div>' +
-                                               '<table style="border:1px solid #c6d0da; width: 100%;" cellpadding="5">' +
+        //                                     '<td><input type="text" id="txtPhone"></td>' +
 
-                                                 '<tr>' +
+        //                                    '</tr>' +
 
-                                                '<td style="width:130px;"><label><b>Address:&nbsp;</b></label></td>' +
+        //                                  '</table>' +
+        //                                     '<div class="clear10"></div>' +
+        //                                       '<table style="border:1px solid #c6d0da; width: 100%;" cellpadding="5">' +
 
-                                                '<td colspan="3"><input type="text" style="width:300px; height:80px;" id="txtAddress"></td>' +
-                                                '<td><label><b>Region:&nbsp;</b></label></td>' +
+        //                                         '<tr>' +
 
-                                               '<td><input type="text" id="txtRegion"></td>' +
+        //                                        '<td style="width:130px;"><label><b>Address:&nbsp;</b></label></td>' +
 
-                                            '</tr>' +
+        //                                        '<td colspan="3"><input type="text" style="width:300px; height:80px;" id="txtAddress"></td>' +
+        //                                        '<td><label><b>Region:&nbsp;</b></label></td>' +
 
-                                                 '</table>' +
+        //                                       '<td><input type="text" id="txtRegion"></td>' +
 
-                                           '<div class="clear10"></div>' +
+        //                                    '</tr>' +
 
-                                           '<div id="divMain1" style="font-weight: bold; color:red;">' + '</div>' +
+        //                                         '</table>' +
 
-                                           '<div class="clear10"></div>' +
+        //                                   '<div class="clear10"></div>' +
 
-                                           '<table style="border:1px solid #c6d0da; width: 100%; padding:5px;">' +
-                                           '<tr><td colspan="2"><label><b>Country:&nbsp;</b></label><span class="mandatory"></span></td>' +
+        //                                   '<div id="divMain1" style="font-weight: bold; color:red;">' + '</div>' +
 
-                                            '<td >' + $DDLCountry + '</td>' +
+        //                                   '<div class="clear10"></div>' +
 
-                                            '<td colspan="2"><label><b>State:&nbsp;</b></label><span class="mandatory"></span></td>' +
+        //                                   '<table style="border:1px solid #c6d0da; width: 100%; padding:5px;">' +
+        //                                   '<tr><td colspan="2"><label><b>Country:&nbsp;</b></label><span class="mandatory"></span></td>' +
 
-                                         '<td >' + $DDLState + '</td>' +
+        //                                    '<td >' + $DDLCountry + '</td>' +
 
-                                        '</tr>' +
+        //                                    '<td colspan="2"><label><b>State:&nbsp;</b></label><span class="mandatory"></span></td>' +
 
-                                        '<tr><td colspan="2"><label><b>City:&nbsp;</b></label><span class="mandatory"></span></td>' +
+        //                                 '<td >' + $DDLState + '</td>' +
 
-                                            '<td >' + $DDLCity + '</td>' +
-                                            '<td colspan="2"><label><b>PostalCode:&nbsp;</b></label><span class="mandatory"></span></td>' +
+        //                                '</tr>' +
 
-                                            '<td ><input type="text" id="txtPostalCode"></td>' +
+        //                                '<tr><td colspan="2"><label><b>City:&nbsp;</b></label><span class="mandatory"></span></td>' +
 
+        //                                    '<td >' + $DDLCity + '</td>' +
+        //                                    '<td colspan="2"><label><b>PostalCode:&nbsp;</b></label><span class="mandatory"></span></td>' +
 
-                                        '</tr>' +
-                                             '<tr><td>&nbsp;</td>' +
-
-                                             '<td colspan="2"><div id="dvMessage" style="display:none; width:500px;text-align:center;"></div></td>' +
-
-                                            '</tr>' +
+        //                                    '<td ><input type="text" id="txtPostalCode"></td>' +
 
 
-                                          '</table>' +
+        //                                '</tr>' +
+        //                                     '<tr><td>&nbsp;</td>' +
 
-                                           '<div class="clear10"></div>' +
+        //                                     '<td colspan="2"><div id="dvMessage" style="display:none; width:500px;text-align:center;"></div></td>' +
 
-                                           '<div id="divMain1" style="font-weight: bold; color:red;">' + '</div>' +
-
-                                           '<div class="clear10"></div>' +
-
-                                           '<table style="border:1px solid #c6d0da; width: 100%; padding:5px;">' +
-
-                                            '<tr><td>&nbsp;</td>' +
-                                             '<td colspan="2"><div style="width:500px;margin-left:300px;">' +
-                                             '<input type="button" id="btnSubmit" value="Submit"/></td></div>' +
-
-                                            '</tr>' +
-
-                                          '</table>' +
+        //                                    '</tr>' +
 
 
-                                         '<div  style="height:6px;">' + '</div>' +
+        //                                  '</table>' +
 
-                            '</div>');
+        //                                   '<div class="clear10"></div>' +
 
-        //--------------------------------------------
+        //                                   '<div id="divMain1" style="font-weight: bold; color:red;">' + '</div>' +
 
-        //    var $ddlStatus = "<select id='ddlForwarded' class='inputDDL'>";
-        //    $ddlStatus = $ddlStatus + "<option value='2'>Forward</option>";
-        //    $ddlStatus = $ddlStatus + "<option value='3'>Resolved</option>";
-        //    $ddlStatus = $ddlStatus + "<option value='4'>Closed</option>";
-        //    $ddlStatus = $ddlStatus + "</select>";
-        //    $openCustomerDetailPop.find('#SelectStatus').append($ddlStatus);
+        //                                   '<div class="clear10"></div>' +
+
+        //                                   '<table style="border:1px solid #c6d0da; width: 100%; padding:5px;">' +
+
+        //                                    '<tr><td>&nbsp;</td>' +
+        //                                     '<td colspan="2"><div style="width:500px;margin-left:300px;">' +
+        //                                     '<input type="button" id="btnSubmit" value="Submit"/></td></div>' +
+
+        //                                    '</tr>' +
+
+        //                                  '</table>' +
+
+
+        //                                 '<div  style="height:6px;">' + '</div>' +
+
+        //                    '</div>');
+
+       
 
 
 
@@ -155,33 +169,63 @@
             responseType: "json",
             success: function (data) {
                 if (CustomerID == 0) {
-                    $ticketDetail.empty();
-                    bindCountries($openCustomerDetailPop.find('#ddlcountry'), 0);
-                    $ticketDetail.append($openCustomerDetailPop);
+                    ///////////////////// Add //////////////////////////
+                    $("#customerId").val("0");
+
+                    $("#txtCompanyName").val("");
+                    $("#txtContactTitle").val("");
+                    $("#txtPhone").val("");
+
+                    $("#CustomerModal").modal("show");
+
+
+                    //$ticketDetail.empty();
+                    //bindCountries($openCustomerDetailPop.find('#ddlcountry'), 0);
+                    //$ticketDetail.append($openCustomerDetailPop);
                 }
 
                 else {
 
-                    $ticketDetail.empty();
+                    ///////////////////// Edit //////////////////////////
 
-                    $openCustomerDetailPop.find('#txtCompanyName').val(data.Records.CompanyName);
-                    $openCustomerDetailPop.find('#txtCustomerBarCode').val(data.Records.CustomerBarCode);
-                    $openCustomerDetailPop.find('#txtCustomerCode').val(data.Records.CustomerCode);
-                    $openCustomerDetailPop.find('#txtContactName').val(data.Records.ContactName);
-                    $openCustomerDetailPop.find('#txtContactTitle').val(data.Records.ContactTitle);
 
-                    $openCustomerDetailPop.find('#txtRegion').val(data.Records.Region);
 
-                    $openCustomerDetailPop.find('#txtPostalCode').val(data.Records.PostalCode);
-                    $openCustomerDetailPop.find('#txtPhone').val(data.Records.Phone);
-                    $openCustomerDetailPop.find('#txtAddress').val(data.Records.Address);
 
-                    bindCountries($openCustomerDetailPop.find('#ddlcountry'), data.Records.Country);
-                    bindStateForEdit($openCustomerDetailPop.find('#ddlstate'), data.Records.Country, data.Records.State)
-                    bindCityForEdit($openCustomerDetailPop.find('#ddlcity'), data.Records.State, data.Records.City)
-                    //$openCustomerDetailPop.find('#Status').attr('disabled', 'disabled');
 
-                    $ticketDetail.append($openCustomerDetailPop);
+                    $("#customerId").val(e.data.CustomerId);
+                    $("#txtCompanyName").val(e.data.record.CustomerName);
+                    $("#txtContactName").val(e.data.record.ContactName);
+                    $("#txtContactTitle").val(e.data.record.ContactTitle);
+                    $("#txtPhone").val(e.data.record.Phone);
+                    $("#CustomerModal").modal("show");
+
+
+
+
+
+
+
+
+                    //$ticketDetail.empty();
+
+                    //$openCustomerDetailPop.find('#txtCompanyName').val(data.Records.CompanyName);
+                    //$openCustomerDetailPop.find('#txtCustomerBarCode').val(data.Records.CustomerBarCode);
+                    //$openCustomerDetailPop.find('#txtCustomerCode').val(data.Records.CustomerCode);
+                    //$openCustomerDetailPop.find('#txtContactName').val(data.Records.ContactName);
+                    //$openCustomerDetailPop.find('#txtContactTitle').val(data.Records.ContactTitle);
+
+                    //$openCustomerDetailPop.find('#txtRegion').val(data.Records.Region);
+
+                    //$openCustomerDetailPop.find('#txtPostalCode').val(data.Records.PostalCode);
+                    //$openCustomerDetailPop.find('#txtPhone').val(data.Records.Phone);
+                    //$openCustomerDetailPop.find('#txtAddress').val(data.Records.Address);
+
+                    //bindCountries($openCustomerDetailPop.find('#ddlcountry'), data.Records.Country);
+                    //bindStateForEdit($openCustomerDetailPop.find('#ddlstate'), data.Records.Country, data.Records.State)
+                    //bindCityForEdit($openCustomerDetailPop.find('#ddlcity'), data.Records.State, data.Records.City)
+                    ////$openCustomerDetailPop.find('#Status').attr('disabled', 'disabled');
+
+                    //$ticketDetail.append($openCustomerDetailPop);
                 }
             },
             error: function (result) {
@@ -366,42 +410,42 @@
 
 
 
-    $(function () {
-        $("#btnSearch").click(function () {
+    //$(function () {
+    //    $("#btnSearch").click(function () {
 
 
-            var CompanyName = $('#txtCompanyName').val();
-            var CustomerCode = $('#txtCustomerCode').val();
-            var ContactName = $('#txtContactName').val();
+    //        var CompanyName = $('#txtCompanyName').val();
+    //        var CustomerCode = $('#txtCustomerCode').val();
+    //        var ContactName = $('#txtContactName').val();
 
-            var City = $('#ddlCitySearch').val();
-            var Region = $('#txtRegion').val();
-            var Country = $('#ddlCountrySearch').val();
-            var State = $('#ddlStateSearch').val();
-            var PostalCode = $('#txtPostalCode').val();
-            var Phone = $('#txtPhone').val();
-            var FromDate = $('#txtFromDate').val();
-            var ToDate = $('#txtToDate').val();
-            var PostalCode = $('#txtPostalCode').val();
+    //        var City = $('#ddlCitySearch').val();
+    //        var Region = $('#txtRegion').val();
+    //        var Country = $('#ddlCountrySearch').val();
+    //        var State = $('#ddlStateSearch').val();
+    //        var PostalCode = $('#txtPostalCode').val();
+    //        var Phone = $('#txtPhone').val();
+    //        var FromDate = $('#txtFromDate').val();
+    //        var ToDate = $('#txtToDate').val();
+    //        var PostalCode = $('#txtPostalCode').val();
 
-            if (City == 0) {
+    //        if (City == 0) {
 
-                City = "";
-            }
+    //            City = "";
+    //        }
 
-            if (State == 0) {
+    //        if (State == 0) {
 
-                State = "";
-            }
+    //            State = "";
+    //        }
 
-            if (Country == 0) {
+    //        if (Country == 0) {
 
-                Country = "";
-            }
+    //            Country = "";
+    //        }
             
-            GetCustomerInformation(CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode);
-        });
-    });
+    //        GetGridData(CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode);
+    //    });
+    //});
 
     $(function () {
         $("#btnGet").click(function () {
@@ -410,8 +454,8 @@
         });
     });
 
-    function GetCustomerInformation(CompanyName, CustomerCode, ContactName, Phone, City, State, Country, FromDate, ToDate, PostalCode) {
-        
+    function GetGridData(SearchField1, SearchField1Value, SearchField2, SearchField2Value, condition) {
+        $("#btnCreateCustomer").on("click", openCustomerDetailPop);
         //debugger;
         $('#dvCustomer').jtable({
             title: 'Customer Details',
@@ -443,7 +487,7 @@
             },
 
             actions: {
-                listAction: 'Customer/GetStudentMarks'
+                listAction: 'Customer/GetGridData'
 
                 //deleteAction: 'Customer/DeleteCustomerInformation'
 
@@ -464,36 +508,94 @@
             },
             fields: {
 
-                CustomerCode: {
-                    title: 'Customer Code',
-                    width: '30%'
-                },
-                CustomerBarCode: {
-                    title: 'Customer Bar Code',
-                    width: '30%'
-                },
-                CompanyName: {
-                    title: 'Company Name',
-                    width: '30%'
+                //CustomerCode: {
+                //    title: 'Customer Code',
+                //    width: '30%'
+                //},
+                
+                CustomerName: {
+                    title: 'Customer&nbsp;name',
+                    width: '20%'
                 },
                 ContactName: {
                     title: 'Contact&nbsp;Name',
-                    width: '30%'
+                    width: '15%'
 
                 },
                 ContactTitle: {
-                    title: 'Contact&nbsp;Title',
-                    width: '50%'
+                    title: 'Title',
+                    width: '5%'
 
                 },
-                Address: {
-                    title: 'Address',
-                    width: '30%'
+                Phone: {
+                    title: 'Phone',
+                    width: '5%'
+
                 },
-                Region: {
-                    title: 'Region',
-                    width: '30%'
+                Fax: {
+                    title: 'Fax',
+                    width: '5%'
+
                 },
+                ContactEmail: {
+                    title: 'Email',
+                    width: '10%'
+
+                },
+                CustomerBarCode: {
+                    title: 'Membership',
+                    width: '5%'
+                },
+                //Website: {
+                //    title: 'Website',
+                //    width: '10%'
+                //},
+
+                
+                //AutoApproveSO: {
+                //    title: 'Auto Approve SO',
+                //    width: '5%'
+
+                //},
+                //AutoApproveSOAmount: {
+                //    title: 'Auto Approve SO Amount',
+                //    width: '5%'
+
+                //},
+                //AutoSend: {
+                //    title: 'Auto Send',
+                //    width: '5%'
+
+                //},
+                //Address: {
+                //    title: 'Address',
+                //    width: '30%'
+                //},
+                //Region: {
+                //    title: 'Region',
+                //    width: '30%'
+                //},
+
+                //View: {
+                //    key: true,
+                //    title: 'View',
+                //    width: '3%',
+                //    display: function (data) {
+
+                //        var $View = $('<img src="Images/edit.png " Title="View">');
+
+                //        $View.bind('click', function () {
+
+                //            openCustomerDetailPop(data.record.CustomerId);
+                //            //openCandidateDocuments(data.record.ID, data.record.Name, data.record.EmailID);
+                //        });
+
+                //        return $View;
+
+                //    }
+
+                //},
+
 
                 Edit: {
                     key: true,
@@ -556,16 +658,18 @@
 
         //$('#dvCustomer').jtable('reload');
         $('#dvCustomer').jtable('load', {
-            CompanyName: CompanyName,
-            CustomerCode: CustomerCode,
-            ContactName: ContactName,
-            Phone: Phone,
-            City: City,
-            State: State,
-            Country: Country,
-            FromDate: FromDate,
-            ToDate: ToDate,
-            PostalCode: PostalCode
+
+            SearchField1: SearchField1, SearchField1Value: SearchField1Value, SearchField2: SearchField2, SearchField2Value: SearchField2Value, condition: condition
+            //CompanyName: CompanyName,
+            //CustomerCode: CustomerCode,
+            //ContactName: ContactName,
+            //Phone: Phone,
+            //City: City,
+            //State: State,
+            //Country: Country,
+            //FromDate: FromDate,
+            //ToDate: ToDate,
+            //PostalCode: PostalCode
 
         });
     }
@@ -688,98 +792,145 @@
 
 <div id="main" runat="server" style="width: 100%;  float: left;">
 
+
+   <div>
+      @{ Html.RenderPartial("Search");  }
+       <input type="button" id="btnCreateCustomer" data-toggle="modal" data-target="#customerModal" class=" btn btn-default pull-right" value="Create Customer" />
+   </div>
     <div>
-        <fieldset>
-            <legend>Filters:</legend>
-            <table class="border01" style="width: 100%;">
-                <tr>
-                    <td align="right">
-                        Customer Code:
-                    </td>
-                    <td>
-                        <input type="text" id="txtCustomerCode">
-                    </td>
-                    <td align="right">
-                        Company Name:
-                    </td>
-                    <td>
-                        <input type="text" id="txtCompanyName">
-                    </td>
-                </tr>
-
-                <tr>
-                    <td align="right">
-                        Contact Name:
-                    </td>
-                    <td>
-                        <input type="text" id="txtContactName">
-                    </td>
-                    <td align="right">
-                        Phone
-                    </td>
-                    <td>
-                        <input type="text" id="txtPhone">
-
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">
-                        Country:
-                    </td>
-                    <td>
-                        <select id='ddlCountrySearch'></select>
-                    </td>
-                    <td align="right">
-                        State:
-                    </td>
-                    <td>
-                        <select id='ddlStateSearch'></select>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td align="right">
-                        City
-                    </td>
-                    <td><select id='ddlCitySearch'></select>  </td>
-                    <td align="right">
-                        Postal Code:
-                    </td>
-                    <td><input type="text" id="txtPostalCode"></td>
-                </tr>
-
-
-                <tr>
-                    <td align="right">
-                        From Date:
-                    </td>
-                    <td><input type="text" id="txtFromDate"></td>
-                    <td align="right">
-                        To Date:
-                    </td>
-                    <td><input type="text" id="txtToDate"></td>
-                </tr>
-
-                <tr>
-                    <td align="center" colspan="4">
-                        <input type="button" id="btnSearch" value="Search" />
-                        &nbsp;
-                        <input type="button" id="btnReset" value="Clear" />
-                    </td>
-
-                    <td align="right" valign="bottom"></td>
-                </tr>
-            </table>
-        </fieldset>
+       
     </div>
+    <br />
+    <p></p>
+    <p></p>
+    @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#customerModal">Open Modal</button>
 
-   
+    <!-- Links -->
+    <a data-toggle="modal" href="#customerModal">Open Modal link</a>
 
-
-    <div id="dvCustomer" style="width:1200px; margin-left:70px;">
-            <input type="button" id="btnCreateCustomer" visible="false" value="Create Customer" />
+    <!-- Other elements -->
+    <p data-toggle="modal" data-target="#customerModal">Open Modal element</p>*@
+    <div id="dvCustomer" style="width:98%;margin-left:10px; ">
     </div>
 
     <div id="dvGlobalPopUp"></div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title" id="myModalLabel">Customer</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="customerId" />
+
+                        <div class="two-cols">
+                            <div class="two-cols-inner">
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Customer Name: *" runat="server" associatedcontrolid="txtCompanyName" />
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtCompanyName" placeholder="Enter Place Of Birth">
+                                    </div>
+                                </div>
+
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Membership:" runat="server" associatedcontrolid="txtCustomerBarCode" />  
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtCustomerBarCode" placeholder="Enter Customer barcode">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="two-cols">
+                            <div class="two-cols-inner">
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Contact Name: *" runat="server" associatedcontrolid="txtContactName" />
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtContactName" placeholder="Enter Customer barcode">
+                                    </div>
+                                </div>
+
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Contact Title:" runat="server" associatedcontrolid="txtContactTitle" />
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtContactTitle" placeholder="Enter Place Of Birth">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="two-cols">
+                            <div class="two-cols-inner">
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Phone: *" runat="server" associatedcontrolid="txtPhone" />
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtPhone" placeholder="Enter Customer barcode">
+                                    </div>
+                                </div>
+
+                                <div class="form-element">
+                                    <div class="label">
+                                        <asp:label text="Contact Title:" runat="server" associatedcontrolid="txtContactTitle" />
+                                    </div>
+                                    <div class="element">
+                                        <input type="text" class="form-control" id="txtContactTitle" placeholder="Enter Place Of Birth">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                                        
+
+
+
+
+
+
+
+
+                      
+                     
+                        @*<div class="form-group">
+                            <label for="dateOfBirth">Date Of Birth</label>
+                            <input type="text" class="form-control" id="dateOfBirth" placeholder="Enter Date Of Birth">
+                        </div>*@
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="btnSave" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
     </div>

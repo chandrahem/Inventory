@@ -83,7 +83,7 @@ namespace IBS.ERP.Controllers
                 objCompany.Website = Convert.ToString(collection["Website"]);
 
                 WebAPI webapi = new WebAPI();
-                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APICompany", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objCompany);
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APICompany", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objCompany);
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
@@ -154,7 +154,7 @@ namespace IBS.ERP.Controllers
                 objCompany.Website = Convert.ToString(collection["Website"]);
 
                 WebAPI webapi = new WebAPI();
-                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APICompany", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objCompany);
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APICompany", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objCompany);
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IBS.ERP.Models.Lookup>
+
+<script type="text/javascript">
+
+ $(function () {
+        $("#btnSearch").click(function () {
+            var SearchField1 = $('#SearchField1').val();
+            var SearchField1Value = $('#txtSearchField1').val();
+            var SearchField2 = $('#SearchField2').val();
+            var SearchField2Value = $('#txtSearchField2').val();
+            var condition = $('#Condition').val();
+
+            GetGridData(SearchField1, SearchField1Value, SearchField2, SearchField2Value, condition);
+        }
+    )
+    });
+
+    </script>
+<table class="table">
+
+
+    <tr>
+        <td>
+            @Html.DropDownList("SearchField1", ViewData["FieldDropdown"] as SelectList)
+        </td>
+        <td>
+            @Html.TextBox("txtSearchField1")
+        </td>
+        <td>
+           @Html.DropDownList("Condition", new SelectList(
+                  new List<Object>{
+                       new { value = "OR" , text = "OR" },
+                       new { value = "And" , text = "AND"}
+                    },
+                  "value",
+                  "text", 0))
+
+        </td>
+        <td>
+            @Html.DropDownList("SearchField2", ViewData["FieldDropdown"] as SelectList)
+        </td>
+        <td>
+            @Html.TextBox("txtSearchField2")
+        </td>
+    </tr>
+    <tr><td align="center" colspan="3"><input type="button" id="btnSearch" value="Search" /></td></tr>
+
+</table>

@@ -12,7 +12,7 @@ namespace IBS.ERP.Models {
         [Required]
         public string CustomerCode { get; set; }
         public string CustomerBarCode { get; set; }
-        public string CompanyName { get; set; }
+        public string CustomerName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
         public string Address { get; set; }
@@ -22,6 +22,7 @@ namespace IBS.ERP.Models {
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
+        public string ContactEmail { get; set; }
         public bool? AutoApproveSO { get; set; }
         public decimal? AutoApproveSOAmount { get; set; }
         public bool? AutoSendSO { get; set; }
@@ -31,7 +32,7 @@ namespace IBS.ERP.Models {
         public DateTime? ModifiedDate { get; set; }
         public short? LockStatus { get; set; }
         public bool? Deleted { get; set; }
-
+        public string WebSite { get; set; }
         public string State { get; set; }
     }
 }

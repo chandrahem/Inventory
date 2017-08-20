@@ -19,12 +19,12 @@ namespace IBS.ERP.DataAccess
 
         }
 
-       private const string SP_CustomerInformation = "[SP_CustomerInformation]";
+         private const string SP_CustomerInformation = "[ERP_Get_CustomerInformation]";
        private const string ERP_GetCustomer = "[ERP_GetCustomer]";
        private const string ERP_Edit_Customer = "[ERP_Edit_Customer]";
        private const string ERP_DeleteCustomer = "[ERP_DeleteCustomer]";
        private const string ERP_GetCountries = "[ERP_GetCountries]";
-       public List<CustomerMaster> GetPartnersList(Paging objPaging, out int TotalRows, out bool blnCreate, out bool blnEdit, out bool blnDelete, out bool blnView, CustomerMaster objCustomer )   //Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
+       public List<CustomerMaster> GetPartnersList(Paging objPaging, out int TotalRows, out bool blnCreate, out bool blnEdit, out bool blnDelete, out bool blnView, Search objSearch )   //Paging objPaging, out Int32 TotalRows, string CompanyName, string CustomerCode, string ContactName1, string Phone, string City, string State, string Country, string FromDate, string ToDate, string PostalCode,  out bool  blnCreate, out bool blnEdit , out bool blnDelete)
        {
            List<CustomerMaster> ListReq = null;
            TotalRows = 0;
@@ -45,17 +45,12 @@ namespace IBS.ERP.DataAccess
                sqlcmd.Parameters.AddWithValue("@MaxRows", objPaging.MaxRows);
                sqlcmd.Parameters.AddWithValue("@OrderBy", objPaging.OrderBy);
                sqlcmd.Parameters.AddWithValue("@Order", objPaging.Order);
-               sqlcmd.Parameters.AddWithValue("@CompanyName", objCustomer.CompanyName);
-               sqlcmd.Parameters.AddWithValue("@CustomerCode", objCustomer.CustomerCode);
-               sqlcmd.Parameters.AddWithValue("@Phone", objCustomer.Phone);
-               sqlcmd.Parameters.AddWithValue("@City", objCustomer.City);
-               sqlcmd.Parameters.AddWithValue("@State", Convert.ToString(objCustomer.State));
-               sqlcmd.Parameters.AddWithValue("@Country", objCustomer.Country);
-               sqlcmd.Parameters.AddWithValue("@FromDate", objPaging.FromDate);
-               sqlcmd.Parameters.AddWithValue("@ToDate", objPaging.ToDate);
-               sqlcmd.Parameters.AddWithValue("@PostalCode", objCustomer.PostalCode);
-               sqlcmd.Parameters.AddWithValue("@ContactName1", objCustomer.ContactName);
-               
+               sqlcmd.Parameters.AddWithValue("@SearchField1", objSearch.SearchField1);
+               sqlcmd.Parameters.AddWithValue("@SearchField1Value", objSearch.SearchField1Value);
+               sqlcmd.Parameters.AddWithValue("@SearchField2", objSearch.SearchField2);
+               sqlcmd.Parameters.AddWithValue("@SearchField2Value", objSearch.SearchField2Value);
+               sqlcmd.Parameters.AddWithValue("@Condition", objSearch.Condition);
+               sqlcmd.Parameters.AddWithValue("@SearchOn", objSearch.SearchOn);
                
                using (SqlDataReader sdr = sqlcmd.ExecuteReader())
                {
@@ -68,6 +63,7 @@ namespace IBS.ERP.DataAccess
                            blnCreate = Convert.ToBoolean(sdr["CreatePermission"]);
                            blnEdit = Convert.ToBoolean(sdr["UpdatePermission"]);
                            blnDelete = Convert.ToBoolean(sdr["DeletePermission"]);
+                          // blnView = Convert.ToBoolean(sdr["DeletePermission"]);
                        }
                    }
                    sdr.Close();
@@ -78,7 +74,7 @@ namespace IBS.ERP.DataAccess
            }
            catch (SqlException ex)
            {
-               Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + "," + objCustomer.CustomerCode + ")", ex);
+               Logger.Error("CustomerDAL.GetCandidateDocuments(" + LoggedInUser + "," + CompanyCode + ")", ex);
            }
            finally
            {
@@ -104,18 +100,28 @@ namespace IBS.ERP.DataAccess
                           while (sdr.Read())
                           {
                               obj = new CustomerMaster();
-                              obj.Address = sdr["Address"].ToString();
-                              obj.CompanyName = sdr["CompanyName"].ToString();
+                              //obj.Address = sdr["Address"].ToString();
+                              obj.CustomerCode = sdr["CustomerCode"].ToString();
+                              obj.CustomerBarCode = sdr["CustomerBarCode"].ToString();
+                              obj.CustomerName = sdr["CustomerName"].ToString();
                               obj.ContactName = sdr["ContactName"].ToString();
                               obj.ContactTitle = sdr["ContactTitle"].ToString();
-                              obj.City = sdr["City"].ToString();
-                              obj.CustomerBarCode = sdr["CustomerBarCode"].ToString();
-                              obj.CustomerCode = sdr["CustomerCode"].ToString();
-                              obj.Region = sdr["Region"].ToString();
-                              obj.Country = sdr["Country"].ToString();
-                              obj.PostalCode = sdr["PostalCode"].ToString();
                               obj.Phone = sdr["Phone"].ToString();
-                              obj.State = sdr["State"].ToString(); 
+                              obj.Fax = sdr["Fax"].ToString();
+                              obj.ContactEmail = sdr["ContactEmail"].ToString();
+                              obj.WebSite = sdr["WebSite"].ToString();
+                              obj.AutoApproveSO =  Convert.ToBoolean(sdr["AutoApproveSO"]);
+                              obj.AutoApproveSOAmount = Convert.ToDecimal(sdr["AutoApproveSOAmount"]);
+                              obj.AutoSendSO = Convert.ToBoolean( sdr["AutoSendSO"]);
+                              
+
+                             // obj.City = sdr["City"].ToString();
+                              
+                             
+                              //obj.Region = sdr["Region"].ToString();
+                              //obj.Country = sdr["Country"].ToString();
+                              //obj.PostalCode = sdr["PostalCode"].ToString();
+                             // obj.State = sdr["State"].ToString(); 
 
                           }
                           sdr.Close();

@@ -1,4 +1,4 @@
-﻿using IBS.ERP.Models;
+using IBS.ERP.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace IBS.ERP.Controllers
     {
         // Currently we are passing two objects 1. entity or general object and Paging , if we need to pass more objects other than Paging then we need to wrap those objects from where we are calling this method  and passed.
         //and create object of those in respective API Controller. same like  we are passing wraping objects in webapi (WebAPIPassingClass) and creating general or entity and paging object  in api controller
-        public async Task<HttpResponseMessage> CallToWebAPI(APICallType apiCallType, string apiControllerName, string apiActionMethod, string connectionString, string userAccount, string roleId, string companyCode, int Id=0, object objectName=null, Paging objPaging=null)
+        public async Task<HttpResponseMessage> CallToWebAPI(APICallType apiCallType, string apiControllerName, string apiActionMethod, string connectionString, string userAccount, string roleId, string companyCode, string Id="0", object object1=null, object object2=null)
         {
             HttpResponseMessage response = null;
             StringContent content=null;
@@ -30,28 +30,27 @@ namespace IBS.ERP.Controllers
 
                 if (apiActionMethod.Length > 0)
                 {
-                    apiPath = Id == 0 ? apiControllerName + "/" + apiActionMethod : apiControllerName + "/" + apiActionMethod + "/" + Id;
+                    apiPath = Id == "0" ? apiControllerName + "/" + apiActionMethod : apiControllerName + "/" + apiActionMethod + "/" + Id;
                 }
                 else
                 {
-                    apiPath = Id == 0 ? apiControllerName : apiControllerName + "/" + Id;
+                    apiPath = Id == "0" ? apiControllerName : apiControllerName + "/" + Id;
                 }
 
-                if (objectName != null && objPaging != null)
-                {
-
+                if (apiCallType == APICallType.Post & object1 !=null & object2 !=null)
+                { 
+                    
                     WebAPIPassingClass wepApiPassingobj = new WebAPIPassingClass();
-                    wepApiPassingobj.objectName = (Object)objectName;
-                    wepApiPassingobj.paging = (Paging)objPaging;
+                    wepApiPassingobj.object1 = (Object)object1;
+                    wepApiPassingobj.object2 = (Object)object2;
 
                     //HttpContent content
                     content = new StringContent(JsonConvert.SerializeObject(wepApiPassingobj), Encoding.UTF8, "application/json");
 
                 }
-                else
-                if (objectName != null)
+                else if (object1 != null)
                 {
-                    content = new StringContent(JsonConvert.SerializeObject(objectName), Encoding.UTF8, "application/json");
+                    content = new StringContent(JsonConvert.SerializeObject(object1), Encoding.UTF8, "application/json");
                 }
 
 
@@ -67,6 +66,12 @@ namespace IBS.ERP.Controllers
                     client.DefaultRequestHeaders.Add("CompanyCode", companyCode);
                     client.DefaultRequestHeaders.Add("DBProviderName", "System.Data.SqlClient");
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    
+                    // passing object  name in header
+                    if (object1 != null)
+                        client.DefaultRequestHeaders.Add("object1Name", object1.GetType().Name);
+                    if (object2 != null)
+                        client.DefaultRequestHeaders.Add("object2Name", object2.GetType().Name);
 
                     // Insert data or In case of showing data in grid pass filter data and paging data use Post
                     if (apiCallType == APICallType.Post)
@@ -78,7 +83,7 @@ namespace IBS.ERP.Controllers
                     {
                         //StringContent content = new StringContent(JsonConvert.SerializeObject(objectName), Encoding.UTF8, "application/json");
                         response = await client.PutAsync(apiPath, content);
-                    } // get dataD:\Inventory_GitHubMapped\Inventory\IBS.ERP\IBS.ERP\Views\Category\Delete.cshtml
+                    } // get data
                     else if (apiCallType == APICallType.Get)
                     {
                         response = await client.GetAsync(webApiBaseUrl + apiPath);
@@ -100,7 +105,7 @@ namespace IBS.ERP.Controllers
 
     public class WebAPIPassingClass
     {
-        public Object objectName { get; set; }
-        public Paging paging { get; set; }
+        public Object object1 { get; set; }
+        public Object object2 { get; set; }
     }
 }

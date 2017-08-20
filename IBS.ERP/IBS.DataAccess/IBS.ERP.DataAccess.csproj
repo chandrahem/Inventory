@@ -65,6 +65,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="baseDAL.cs" />
     <Compile Include="CategoriesDAL.cs" />
+    <Compile Include="CommonDAL.cs" />
     <Compile Include="CompanyDAL.cs" />
     <Compile Include="CustomerDAL.cs" />
     <Compile Include="EmployeeDAL.cs" />

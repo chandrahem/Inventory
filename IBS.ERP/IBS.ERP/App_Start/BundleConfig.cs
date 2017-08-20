@@ -36,11 +36,12 @@ namespace IBS.ERP
                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/site.css",
-                      "~/Content/bootstrap.css",
-                      "~/Scripts/Jtable/themes/metro/metroBlue/jquery-ui.css",
-                      "~/Scripts/jtable/themes/metro/blue/jtable.min.css",
-                      "~/Scripts/jquery-ui.css"));
+                "~/Content/bootstrap.css",
+                "~/Content/bootstrap-theme.min.css",
+                "~/Content/site.css",
+                "~/Scripts/Jtable/themes/metro/metroBlue/jquery-ui.css",
+                "~/Scripts/jtable/themes/metro/blue/jtable.min.css",
+                "~/Scripts/jquery-ui.css"));
 
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862

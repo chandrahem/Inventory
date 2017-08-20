@@ -26,3 +26,95 @@ textarea {
     color: red;
     font-weight: bold;
 }
+
+
+.form-element .label
+{
+    width: 20%;
+    float: left;
+    font-family: Open Sans !important;
+    font-weight: bold;
+    font-size: 16px !important;
+}
+
+.form-element .element
+{
+    width: 80%;
+    float: left;
+    font-family: Open Sans !important;
+     font-size: 14px !important;
+}
+
+.form-element
+{
+    width: 100%;
+    padding: 10px;
+    float: left;
+}
+
+
+.two-fields
+{
+    clear: both;
+    text-align: left;
+    float: left;
+}
+
+.form-element .rich-text
+{
+    width: 680px;
+}
+
+.two-cols
+{
+    width: 100%;
+    float: left;
+}
+
+.two-cols > .two-cols-inner
+{
+    width: 100%;
+    padding: 0 0 0 10px;
+    float: left;
+}
+
+.two-cols > .two-cols-inner > .form-element
+{
+    width: 50%;
+    clear: none;
+    float: left;
+    padding: 10px 0;
+}
+
+.two-cols > .two-cols-inner > .form-element .element
+{
+    width: 62%;
+}
+
+.two-cols > .two-cols-inner > .form-element .label
+{
+    width: 33%;
+}
+
+.form-element.two-cols
+{
+    border: 1px solid #dedede;
+    width: 660px;
+    margin: 10px;
+}
+
+.form-element .element.col, .form-element .label.col
+{
+    width: 300px;
+    padding: 10px 10px 0;
+}
+
+.form-element .label.col
+{
+    padding-top: 0;
+}
+
+.form-element .element.col.col1, .form-element .label.col.col1
+{
+    padding-right: 30px;
+}

@@ -41,7 +41,7 @@ namespace IBS.ERP.Controllers
             // Currently we are passing two objects 1. customer and Paging , if we need to pass more objects other than Paging then we need to wrap those objects and passed. 
             //same like  we are passing wraping objects in webapi (WebAPIPassingClass)
             WebAPI webapi = new WebAPI();
-            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objEmployee, objpaging);
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objEmployee, objpaging);
             if (response.IsSuccessStatusCode)
             {
 
@@ -109,7 +109,7 @@ namespace IBS.ERP.Controllers
                 objEmployee.Region = Convert.ToString(collection["Region"]);
 
                 WebAPI webapi = new WebAPI();
-                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objEmployee);
+                HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objEmployee);
                 if (response.IsSuccessStatusCode)
                 {
                     var data = await response.Content.ReadAsStringAsync();
@@ -172,7 +172,7 @@ namespace IBS.ERP.Controllers
             // Currently we are passing two objects 1. customer and Paging , if we need to pass more objects other than Paging then we need to wrap those objects and passed. 
             //same like  we are passing wraping objects in webapi (WebAPIPassingClass)
             WebAPI webapi = new WebAPI();
-            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), 0, objEmployee);
+            HttpResponseMessage response = await webapi.CallToWebAPI(APICallType.Post, "APIEmployee", "", Convert.ToString(Session["DBConnectionString"]), Convert.ToString(Session["UserAccount"]), Convert.ToString(Session["RoleId"]), Convert.ToString(Session["CompanyCode"]), "0", objEmployee);
             if (response.IsSuccessStatusCode)
             {
 
